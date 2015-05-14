@@ -8,5 +8,5 @@ Basically, feel free to share and adapt the work in any way you see fit, as long
 1. You give appropriate credit and indicate if changes were made.
 2. You do not use anything for any sort of commercial purposes.
 
-For more information, see the Creative Commons page [here](creativecommons.org/licenses/by-nc/4.0/).
+For more information, see the Creative Commons page [here](http://www.creativecommons.org/licenses/by-nc/4.0/).
 
