@@ -35,7 +35,7 @@ When we look for numerical summaries of a quantitave variable, we are primarily 
 - Measures of Center -- what is a typical value?
 - Measures of Spread -- how far, on average, do individuals stray from the center?
 
-These two types of measures tell us about how the variable is *distributed* among our individuals. The *distribution* helps us answer questions like:
+These properties tell us about how the variable is *distributed* among our individuals. The *distribution* helps us answer questions like:
 
 - What was the national average rate of arrests for murder in 1973?
 - What percent of states arrested more people for assault per capita than Arizona?
@@ -121,7 +121,7 @@ We call the areas at either end the *tails* of the distribution.  So, in terms o
 - **Right**-Skewed: the **right tail** is longer
 - **Left**-Skewed: the **left tail** is longer
 
-Remember that when we talk about skew we're talking about the **unusual** points, not that majority.
+Remember that when we talk about skew we're talking about the **unusual** points, not the majority.
 
 ## Symmetric Histogram
 ```{r echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center", message = FALSE}
@@ -163,7 +163,7 @@ Histograms are generally very good, but they have some things to be careful of:
 
 ## Your Turn
 
-Describe the distribution of the variables from the US Arrests data set.  The variables are
+Describe the distribution of the variables from the US Arrests data set.  The variables are:
 
 - Murder: number of people arrested for murder (per 100,000 residents)
 - Assault: number of people arrested for assault (per 100,000 residents)
@@ -541,7 +541,7 @@ Finding the mean:
 
 Recall that the median of this data was still $15$.  
 
-- The mean is always more affected by outliers than the median
+- The mean is always pulled towards outliers
 
 ## The Mean vs. the Median
 
@@ -586,8 +586,8 @@ $$s^2 = \frac{\sum (x - \bar{x})^2}{n-1}$$
 What does this formula mean?
 
 - After finding the mean, subtract it from every value
-- Square the difference to make it positive
-- Add up all of the squared distances
+- Square each difference to make it positive
+- Add up all of the squared differences
 - Divide by the number of observations minus one
 
 So the variance gives is the average *squared distance* from the mean.
@@ -600,6 +600,23 @@ To correct the problem of having squared units, we take the square root of the v
 $$s = \sqrt{s^2} = \sqrt{\frac{\sum (x - \bar{x})^2}{n-1}}$$
 
 - We interpret the standard deviation as the average distance of the points from the mean.
+- Variances and standard deviations are **always** positive $(s \ge 0)$
+- The closer together the values are, the smaller the standard deviation (and variance) will be
+
+## The Standard Deviation and Outliers
+
+$1,\; 5,\; 7,\; 12,\; 18,\; 18,\; 25,\; 30$
+
+- $s = 10.07$
+
+$1,\; 5,\; 7,\; 12,\; 18,\; 18,\; 25,\; 60$
+
+- $s = 18.62$
+
+As a rule:
+
+- Making any value further away from the mean will increase $s$
+- Making any value closer to the mean will decrease $s$
 
 ## Visualizing the Standard Deviation
 ```{r echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center", message = FALSE}
@@ -625,7 +642,7 @@ What about the version with an outlier? $1,\; 5,\; 7,\; 12,\; 18,\; 18,\; 25,\; 
 Earlier we said that the mean is worse than the median for skewed data.  Since the standard deviation is calculated using the mean, if we throw out the mean we also need to throw out the standard deviation.
 
 ## Mean and Standard Deviation vs Median and IQR
-So if both pairs of measures are good for symmetric data, and the median and IQR beat out the mean and standard deviation for skewed data, aren't the median and IQR always the better choice?
+So if both pairs of measures are good for symmetric data, and the median and IQR beat out the mean and standard deviation for skewed data, aren't the median and IQR always the better choices?
 
 Not necessarily.
 
