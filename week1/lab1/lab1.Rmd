@@ -1,0 +1,97 @@
+---
+title: 'Lab 1: Motor Trend Cars'
+output: pdf_document
+---
+
+## Overview
+In this lab, we will examine the Motor Trend Cars data set.
+
+The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
+
+Variable | Description
+---------|---------------
+mpg |	Miles/(US) Gallon
+cyl |	Number of Cylinders
+disp |	Displacement (cu.in.)
+hp |	Gross horsepower
+wt |	Weight (lb/1000)
+qsec |	1/4 mile time
+vs |	V or Straight Configuration Engine
+am |	Transmission Type (auto/manual)
+
+## Load the Data in StatCrunch
+A Comma Separated File containing the data can be found here:
+
+[http://stat.wvu.edu/~draffle/111/week1/lab1/mtcars2.tsv](http://stat.wvu.edu/~draffle/111/week1/lab1/mtcars2.tsv)
+
+1. In StatCrunch, use the menus `Data` $\to$ `Load` $\to$ `From File` $\to$ `On the web`.
+2. Copy and Paste the address given above into `WWW Address`
+4. Click `Load File` at the bottom of the page.
+
+## Complete the following problems on a separate piece of paper.
+Hand in your answers at the end of lab -- make sure to include you name and the lab number.  Instructions are included for making graphs and finding the necessary statistics for each problem.
+
+Answer each question with a sentence, a sketch, or both.
+
+### 1.) List each variable and its type (categorical/quantitative). 
+
+### 2.) Report the Frequency and Relative Frequency Tables of `cyl`.  Describe the distribution.
+
+1. `Stat` $\to$ `Tables` $\to$ `Frequency`
+2. `Select Column(s)`: `cyl`
+
+### 3.) Sketch a Bar Plot of `am`.  Which Transmission type is more common?
+
+1. `Graph` $\to$ `Bar Plot` $\to$ `With Data`
+2. `Select Column(s)`: `am`
+
+### 4.) Make a Histogram of `hp` (you do not need to sketch it).  Describe the shape of the distribution.
+
+1. `Graph` $\to$ `Histogram` $\to$ `With Data`
+2. `Select Column(s)`: `hp`
+
+### 5.) Which Measures of Center are better for `hp`?  Report them.
+
+1. `Stat` $\to$ `Summary Stats` $\to$ `Columns`
+2. `Select Column(s)`: `hp`
+
+### 6.) Sketch a Side-by-Side Boxplot of `hp` grouped by `am`.  Describe the differences in the distributions.
+
+1. `Graph` $\to$ `Boxplot`
+2. `Select Column(s)`: `hp`
+3. `Group By`: `am`
+4. `Other Options`: Check `Use Fences to identify outliers`
+
+### 7.) Sketch the QQ Plot of `mpg`.  Is the distribution approximately Normal?  
+
+1. `Graph` $\to$ `QQ Plot`
+2. `Select Column(s)`: `mpg`
+
+### 8.) If a certain car had a fuel efficiency of 22 MPG, would it be more rare for an automatic or a manual car?  Show your work.
+
+1. `Stat` $\to$ `Summary Stats` $\to$ `Columns`
+2. `Select Column(s)`: `mpg`
+3. `Group By`: `am`
+
+### 9.) Assume that `MPG` $\sim N(\mu = 20, \sigma = 6)$.  What is the 90% percentile for the `MPG` of all cars?  
+I.e., if $P(MPG \le x) = 0.9$, what is $x$?
+
+1. `Stat` $\to$ `Calculators` $\to$ `Normal`
+
+### 10.) If quarter mile times follow the Normal Model $N(\mu = 17.85, \sigma = 1.79)$, how quickly do the middle 75% of cars complete a quarter mile drag race?  
+I.e., if $P(l \le QSEC \le u) = 0.75$, what are $l$ and $u$? 
+
+1. `Stat` $\to$ `Calculators` $\to$ `Normal`
+
+
+
+
+
+
+
+
+
+
+
+
+
