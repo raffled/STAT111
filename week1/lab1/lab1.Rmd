@@ -20,7 +20,7 @@ vs |	V or Straight Configuration Engine
 am |	Transmission Type (auto/manual)
 
 ## Load the Data in StatCrunch
-A Comma Separated File containing the data can be found here:
+A Tab Separated File (.tsv) containing the data can be found here:
 
 [http://stat.wvu.edu/~draffle/111/week1/lab1/mtcars2.tsv](http://stat.wvu.edu/~draffle/111/week1/lab1/mtcars2.tsv)
 
@@ -31,7 +31,9 @@ A Comma Separated File containing the data can be found here:
 ## Complete the following problems on a separate piece of paper.
 Hand in your answers at the end of lab -- make sure to include you name and the lab number.  Instructions are included for making graphs and finding the necessary statistics for each problem.
 
-Answer each question with a sentence, a sketch, or both.
+Each question will be worth two points, and you can receive partial credit for incorrect answers if your process was correct.
+
+Write your final answer as a sentence and include all steps you used to get there, otherwise you will receive partial credit.
 
 ### 1.) List each variable and its type (categorical/quantitative). 
 
