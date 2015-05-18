@@ -9,6 +9,11 @@ output:
     widescreen: yes
 ---
 
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center", 
+                      message = FALSE, warning=FALSE, cache = TRUE) 
+```
+
 ```{r echo = FALSE, message = FALSE}
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(ggplot2, quietly = TRUE, warn.conflicts = FALSE)
@@ -164,7 +169,7 @@ ggplot(titanic, aes(x = PClass, fill = Survived)) +
 ---
 
 ```{r echo = FALSE, fig.width = 10, fig.height = 6, fig.align = "center"}
-ggplot(titanic, aes(x = Survived, fill = Sex)) + 
+ggplot(titanic, aes(x = Sex, fill = Survived)) + 
   geom_bar(position="dodge") +
   this.theme +
   ggtitle("Survival by Gender")
@@ -173,7 +178,7 @@ ggplot(titanic, aes(x = Survived, fill = Sex)) +
 ---
 
 ```{r echo = FALSE, fig.width = 10, fig.height = 6, fig.align = "center"}
-ggplot(titanic, aes(x = Survived, fill = Age)) + 
+ggplot(titanic, aes(x = Age, fill = Survived)) + 
   geom_bar(position="dodge") +
   this.theme + coord_flip() +
   ggtitle("Survival by Age")
@@ -206,12 +211,12 @@ ggplot(titanic, aes(x = factor(1), fill = PClass)) +
 ```{r echo = FALSE, fig.width = 10, fig.height = 6, fig.align = "center"}
 par(mfrow = c(1, 2))
 with(titanic, {
-    tab <- table(Sex[Survived == 'dead'])
+    tab <- table(Survived[Sex == 'female'])
     lbls <- paste(names(tab), " (", round(100*tab/sum(tab), 1), "%)", sep = "")
-    pie(tab, lbls, main = "Sex of Dead")
-    tab <- table(Sex[Survived == 'alive'])
+    pie(tab, lbls, main = "Survival of Women")
+    tab <- table(Survived[Sex == 'male'])
     lbls <- paste(names(tab), " (", round(100*tab/sum(tab), 1), "%)", sep = "")
-    pie(tab, lbls, main = "Sex of Survivors")
+    pie(tab, lbls, main = "Survival of Men")
   }
 )
 par(mfrow = c(1, 1))
@@ -219,9 +224,8 @@ par(mfrow = c(1, 1))
 
 ---
 
-- Notice that we don't really know the survival rate of women from this chart, only the distribution of gender within each survival category.
-- I.e., If many more people died than survived, there may be more women who died than survived.
-- If more people survived than died, there could be more male survivors than male dead.
+- Notice that we can't really compare the genders of the survivors or the dead
+- I.e., there were many more men, so there may still be more male survivors than female.
 - The only way to know for sure would be to look at the counts, or invert the chart and graph the percentages of alive and dead within each sex.
 
 ## Comparing Sex and Survival (V2)
@@ -229,12 +233,12 @@ par(mfrow = c(1, 1))
 ```{r echo = FALSE, fig.width = 10, fig.height = 6, fig.align = "center"}
 par(mfrow = c(1, 2))
 with(titanic, {
-    tab <- table(Sex[Survived == 'dead'])
+    tab <- table(Survived[Sex == 'female'])
     lbls <- paste(names(tab), " (", tab, ")", sep = "")
-    pie(tab, lbls, main = "Sex of Dead")
-    tab <- table(Sex[Survived == 'alive'])
+    pie(tab, lbls, main = "Survival of Women")
+    tab <- table(Survived[Sex == 'male'])
     lbls <- paste(names(tab), " (", tab, ")", sep = "")
-    pie(tab, lbls, main = "Sex of Survivors")
+    pie(tab, lbls, main = "Survival of Men")
   }
 )
 par(mfrow = c(1, 1))
@@ -243,9 +247,9 @@ par(mfrow = c(1, 1))
 ## Practice
 In a group of thirty-one students twenty have brown eyes, eight have blue eyes, and three have hazel eyes find:
 
-- The frequency of students with hazel eyes
-- The relative frequency of students with brown eyes
-- The percentage of students with blue eyes
+- The frequency of students with hazel eyes $(x_h)$
+- The relative frequency of students with brown eyes $(\hat{p}_{br})$
+- The percentage of students with blue eyes $(100 \times \hat{p}_{bl})$
 
 Solutions:
 
