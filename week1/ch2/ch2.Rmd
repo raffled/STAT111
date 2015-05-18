@@ -224,9 +224,11 @@ par(mfrow = c(1, 1))
 
 ---
 
-- Notice that we can't really compare the genders of the survivors or the dead
+Notice:
+
+- We can't really compare the genders of the survivors or the dead
 - I.e., there were many more men, so there may still be more male survivors than female.
-- The only way to know for sure would be to look at the counts, or invert the chart and graph the percentages of alive and dead within each sex.
+- The only way to know for sure would be to look at the counts, or invert the chart and graph the percentages of gender within alive and dead.
 
 ## Comparing Sex and Survival (V2)
 
