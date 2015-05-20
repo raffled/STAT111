@@ -1,6 +1,6 @@
 ---
 title: 'Chapter 5'
-subtitle: 'The Standard Deviation as  Rule and the Normal Model'
+subtitle: 'The Standard Deviation as  Ruler and the Normal Model'
 author: "D. Raffle"
 date: "5/20/2015"
 output:
@@ -24,38 +24,9 @@ In this chapter, we will discuss:
 - Finding Normal Percentiles
 - Assessing Normality
 
-## Review
-
-From Chapter 3:
-
-- A *symmetric distribution* is one that is "mirrored" around the center
-- A *unimodal distribution* has one peak
-- In a symmetric distribution, the *mean* and the *median* are the same
-- If the data is *skewed*, we can often *re-express* it so that it is symmetric
-
-In this chapter, we will concentrate on unimodal, symmetric distributions
-
-- The sample mean is the measure of center, it is the "balancing point" of the distribution.
-- The sample standard deviation is the measure of spread, it tells us how far, on average, observations are from the mean
-
-## Review (cont.)
-
-We calculate the mean as:
-
-- $\bar{x} = \frac{\sum x}{n}$
-
-And the Standard Deviation as:
-
-- $s = \sqrt{\frac{\sum (x - \bar{x})^2}{n - 1}}$
-
-Recall:
-
-- $n$ is our *sample size* or number of observations
-
-Generally, we will use software like StatCrunch to find these values for us
 
 ## The Data
-For this chapter, we will compare the SAT and ACT scores of 10000 students who took both exams.  
+For this chapter, we will compare the SAT and ACT scores of 10,000 students who took both exams.  
 ```{r}
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(tidyr, quietly = TRUE, warn.conflicts = FALSE)
@@ -63,6 +34,8 @@ library(ggplot2, quietly = TRUE, warn.conflicts = FALSE)
 set.seed(250)
 dat <- data.frame(ID = sample(100000:999999, 10000), SAT = rnorm(10000, 1500, 250), 
                   ACT = rnorm(10000, 21, 5))
+dat$SAT <- ifelse(dat$SAT > 2400, 1500, dat$SAT)
+dat$ACT <- ifelse(dat$ACT > 36, 21, dat$ACT)
 dat.long <- dat %>% gather(Test, Score, -ID)
 head(dat)
 ```
@@ -198,7 +171,7 @@ Let's look at one particular student who scored 1725 on the SATs and 27 on the A
 Which score should she send with her application?
 
 - $Z_{SAT} = \frac{SAT - \overline{SAT}}{s_{SAT}} =  \frac{1725 - 1500}{200} = \frac{225}{250} = 0.9$
-- $Z_{ACT} = \frac{ACT - \overline{ACT}}{s_{ACT}} = \frac{26 - 21}{5} = = \frac{6}{5} = 1.2$
+- $Z_{ACT} = \frac{ACT - \overline{ACT}}{s_{ACT}} = \frac{27 - 21}{5} = = \frac{6}{5} = 1.2$
 
 Compared to her peers:
 
@@ -209,7 +182,7 @@ Compared to her peers:
 ## Using Z-Scores to Compare Observations
 Let's look at another student who scored 1475 on the SATs and 20 on the ACTs.
 
-Which score should she send with her application?
+Which score should he send with he application?
 
 - $Z_{SAT} = \frac{SAT - \overline{SAT}}{s_{SAT}} =  \frac{1475 - 1500}{250} = -\frac{25}{250} = -0.1$
 - $Z_{ACT} = \frac{ACT - \overline{ACT}}{s_{ACT}} = \frac{20 - 21}{5} = -\frac{1}{5} = -0.2$
@@ -218,7 +191,7 @@ Compared to her peers:
 
 - This student's SAT score was 0.1 standard deviations lower than average
 - This student's ACT score was 0.2 standard deviations lower than average
-- She did better on the SATs than the ACTs
+- He did better on the SATs than the ACTs
 
 ## Why Z-Scores Work: Shifting and Scale
 We call what z-scores do *centering and scaling*.
@@ -242,13 +215,17 @@ Now let's add 3 to every number: $4,\; 6,\; 8,\; 10,\; 12$
 
 - $\bar{x} = \frac{4 + 6 + 8 + 10 + 12}{5} = \frac{40}{5} = 8$
 
+Note that measures of spread will not change
+
+- The distance between observations stays the same
+
 What happened?
 
 - By adding 3 to every number, we *shifted* the mean by 3
 - Every number in the five number summary also goes up by 3
 
 ## Shifting in Practice
-Say some Ivy League university will only accept students who score at least a 1750 on the SATs.  We can look at our distribution of SAT scores in terms of how far above (or below) our students are by subtracting 480 from every score.
+Say some Ivy League university will only accept students who score at least a 1750 on the SATs.  We can look at our distribution of SAT scores in terms of how far above (or below) our students are by subtracting 1750 from every score.
 
 What does this do to the mean (recall that $\overline{SAT} = 1500$)?
 
@@ -264,6 +241,7 @@ ggplot(dat, aes(x = SAT)) + geom_histogram(color = "grey80") + this.theme +
 ```
 
 ## Histogram of Shifted SAT Scores
+The red line represents the cut-off:
 ```{r}
 ggplot(dat, aes(x = I(SAT - 1750))) + geom_histogram(color = "grey80") + this.theme +
   geom_vline(xintercept = 0, color = "red", size = 2) + xlab("Points Above 1750")
@@ -289,7 +267,22 @@ Notice:
 - All measures of *position* (the five number summary and mean) were shifted down by 1750
 - Both measures of *spread* (the SD and IQR) stayed the same
 
-## Shifting
+## Scaling
+Consider the data set: $1,\; 3,\; 5,\; 7,\; 9$
+
+- $\bar{x} = 5$
+- $s_{x} = 3.16$
+
+Now let's multiply all of them by 3: $3,\; 9,\; 15,\; 21,\; 17$
+
+- $\bar{x}_{3x} = 15$
+- $s_{3x} = 3\times s_x = 9.487$
+
+When we scale by a constant:
+
+- All measurements of center and scale are multiplied by that constant
+
+## Scaling in Practice
 Say we're interested in the weights of the cars from the Motor Trend data set we used in the previous chapter, but we're writing for a European magazine which expects the weights in kilograms.
 
 - The standard deviation of weight was 978.5 lbs.
@@ -297,7 +290,7 @@ Say we're interested in the weights of the cars from the Motor Trend data set we
 What's the standard deviation in kg?
 
 - $1 lb = 0.454kg$
-- $s = 978.5 lbs = (978 \times 0.454) kg = 444.2 kg$
+- $s = 978.5 lbs = (978.5 \times 0.454) kg = 444.2 kg$
 
 How do the distributions compare if we change the units?
 
