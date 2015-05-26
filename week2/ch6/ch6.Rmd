@@ -1,0 +1,467 @@
+---
+title: "Chapter 6"
+author: "D. Raffle"
+date: "5/26/2015"
+output:
+  ioslides_presentation:
+    incremental: yes
+    widescreen: yes
+subtitle: "Scatterplots, Association, and Correlation"
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center", 
+                      message = FALSE, warning=FALSE, cache = TRUE) 
+```
+
+## Review: Comparing Variables
+
+In previous chapters, we looked for relationships (associations) between variables by:
+
+- Comparing categorical variables with contingency tables and stacked barplots
+- Comparing numeric variables across groups with side-by-side boxplots
+- Looked at how variables change over time with timeplots
+
+In this chapter, we will:
+
+- Look for relationships between two numeric variables
+
+## The Data
+
+Recall the Motor Trend Cars data from previous chapters:
+
+```{r}
+mtcars2 <- mtcars %>% mutate(am = factor(am, levels = c("0", "1"), labels = c("manual", "auto")),
+                             vs = factor(vs, levels = c("0", "1"), labels = c("V", "S")),
+                             cyl = as.factor(cyl)) %>%
+                      dplyr::select(-drat, -carb, -gear)
+rownames(mtcars2) <- rownames(mtcars)
+head(mtcars2)
+```
+
+We might want to know:
+
+- Is there a relationship between engine displacement (size) and horsepower?
+- Is weight related to fuel efficiency?
+
+## Overview
+How to we find relationships between numeric (quantitative) variables?
+
+- Visually: using **scatterplots**
+- Numerically: using the **correlation coefficient**
+- Usually, we do both
+- In this course, we will only focus on **linear** relationships
+
+## Scatterplots
+```{r}
+library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+library(tidyr, quietly = TRUE, warn.conflicts = FALSE)
+library(ggplot2, quietly = TRUE, warn.conflicts = FALSE)
+ps <- element_text(size = 12)
+ps2 <- element_text(size = 15)
+ps3 <- element_text(size = 20)
+this.theme <- theme(axis.title.x = ps2, axis.title.y = ps2, axis.text.x = ps, axis.text.y = ps, 
+                    title = ps3,
+                    legend.text = ps)
+x <- rnorm(50, 10)
+y <- 3*x + rnorm(50, 0, 2)
+ggplot(data.frame(x = x, y = y), aes(x = x, y = y)) + geom_point(size = 3) + this.theme
+```
+
+## Scatterplots
+How to make scatterplots:
+
+- Define one variable as the $X$ variable, and one as $Y$
+- Draw a point for each observation, using the values of the $X$ and $Y$ variables as coordinates
+- Typically, the $X$ variable is on the horizontal axis and the $Y$ variable on the vertical axis
+
+What we look for:
+
+- Is there are trend or pattern?
+- Are there any outliers or unusual points?
+
+
+## Horsepower vs. Displacement
+
+```{r}
+ggplot(mtcars2, aes(x = disp, y = hp)) + geom_point(size = 3) + this.theme +
+  ylab("Horsepower") + xlab("Displacement (cu. in.)")
+```
+
+## Horsepower vs. Displacement
+
+Is there a relationship?
+
+- As engines get bigger, they tend to have more horsepower
+- We call this a **positive** association
+
+Are there any unusual points?
+
+- There is a point well above the rest
+- Notice that it's engine size is right in the middle (about 300 cu. in.), but its horsepower is larger than any other car
+
+## Weight vs. Fuel Efficiency
+```{r}
+ggplot(mtcars2, aes(x = wt, y = mpg)) + geom_point(size = 3) + this.theme +
+  xlab("Weight (lbs/1000)") + ylab("Fuel Efficiency (mpg)")
+```
+
+## Weight vs. Fuel Efficiency
+
+Is there a relationship?
+
+- As cars get heavier, they tend to have lower fuel efficiency
+- We call this a **negative** association
+
+Are there any outliers?
+
+- No points fall far away from the rest
+
+## Types of Relationships
+
+There are many types of trends that can come up when we make scatterplots.  In this class, we will focus on the most common:
+
+- **Linear**: The trend can be described fairly well by a straight line
+- **Non-linear**: Any other type of trend
+
+Directions of Relationships
+
+- **Positive**: As one variable goes up, so does the other one
+- **Negative**: As one variable goes up, the other goes down
+
+Why lines?
+
+- In statistics, we often try to find the *simplest adequate method*.  Lines are simple.
+
+## Strong Positive Linear Trend
+```{r}
+x <- rnorm(100, 20, 2)
+y <- 2*x + rnorm(100)
+dat1 <- data.frame(x = x, y = y)
+ggplot(dat1, aes(x = x, y = y)) + geom_point() + this.theme
+```
+
+## Moderate Negative Linear Trend
+```{r}
+x <- rnorm(100, 30, 20)
+y <- -3*x + rnorm(100, 0, 50)
+dat2 <- data.frame(x = x, y = y)
+ggplot(dat2, aes(x = x, y = y)) + geom_point() + this.theme
+```
+
+## Weak Positive Linear Trend
+```{r}
+x <- rnorm(100, 30, 20)
+y <- 5*x + rnorm(100, 0, 150)
+dat3 <- data.frame(x = x, y = y)
+ggplot(dat3, aes(x = x, y = y)) + geom_point() + this.theme
+```
+
+## No Trend
+```{r}
+dat4 <- data.frame(x = rnorm(100, 100, 10), y = rnorm(100, 10, 2))
+ggplot(dat4, aes(x = x, y = y)) + geom_point() + this.theme
+```
+
+## Non-Linear Trend
+```{r}
+x <- rnorm(100, 2, 20)
+y <- -x^2 + rnorm(100, 0, 200)
+dat5 <- data.frame(x = x, y = y)
+ggplot(dat5, aes(x = x, y = y)) + geom_point() + this.theme
+```
+
+## Non-Linear Trend
+```{r}
+x <- rnorm(100, 0, 20)
+y <- x^3 + rnorm(100, 0, 5000)
+dat6 <- data.frame(x = x, y = y)
+ggplot(dat6, aes(x = x, y = y)) + geom_point() + this.theme
+```
+
+## Roles of Variables
+How do we decide which is $X$ and which is $Y$?
+
+The $X$ Variable is:
+
+- The **explanatory** or **independent** variable.
+- We want to know if changes in this variable *explains* changes in $Y$
+
+The $Y$ Variable is:
+
+- The **response** or **dependent** variable
+- We want to see if this variable *responds* when we change $X$
+
+Which is which depends on what question we're asking.
+
+## Variable Role Examples
+
+Horsepower vs. Engine Displacement
+
+- It makes sense that giving a car a bigger engine gives it more power.
+- We can't just give a car more horsepower, horsepower *responds* to changes we make to the car.
+- Horsepower should be $Y$, and Engine Displacement should be $X$.
+
+Fuel Efficiency vs. Weight
+
+- When we make a car heavier, it should mean that it takes more fuel to move it.
+- Fuel efficiency *responds* to changes in the properties of the car.
+- Fuel Efficiency should be $Y$, and Weight should be $X$.
+
+## Measuring the Strength
+
+How do we measure how strong the relationship is?
+
+- We use the **correlation coefficient**
+- $r = \frac{\sum z_y \times z_x}{n-1}$
+- StatCrunch will find this for us
+
+What is the correlation coefficient?
+
+- $r$ is the **strength of the linear relationship between two numeric variables**
+- It tells us how well a straight line explains the relationship
+
+## Interpreting Correlation
+
+- $-1 \le r \le 1$
+- The **value** of $r$ tells us the strength
+- The **sign** of $r$ tells us the direction
+- $r = 1$: the points make a **perfect** straight line with a **positive** slope
+- $r = -1$: the points make a **perfect** straight line with a **negative** slope
+- $r = 0$: there is no linear relationship at all
+
+Notes:
+
+- You can sometimes get high correlations even if the relationship isn't linear
+- You should **always** see a scatterplot along with a correlation coefficient to know whether or not it's meaningful
+
+
+## Strong Positive Linear Trend
+```{r}
+r <- round(cor(dat1)[1, 2], 2)
+lab <- paste("r = ", r)
+ggplot(dat1, aes(x = x, y = y)) + geom_point() + this.theme +
+  ggtitle(lab)
+```
+
+## Moderate Negative Linear Trend
+```{r}
+r <- round(cor(dat2)[1, 2], 2)
+lab <- paste("r = ", r)
+ggplot(dat2, aes(x = x, y = y)) + geom_point() + this.theme +
+  ggtitle(lab)
+```
+
+## Weak Positive Linear Trend
+```{r}
+r <- round(cor(dat3)[1, 2], 2)
+lab <- paste("r = ", r)
+ggplot(dat3, aes(x = x, y = y)) + geom_point() + this.theme +
+  ggtitle(lab)
+```
+
+## No Trend
+```{r}
+r <- round(cor(dat4)[1, 2], 2)
+lab <- paste("r = ", r)
+ggplot(dat4, aes(x = x, y = y)) + geom_point() + this.theme +
+  ggtitle(lab)
+```
+
+## Non-Linear Trend
+```{r}
+r <- round(cor(dat5)[1, 2], 2)
+lab <- paste("r = ", r)
+ggplot(dat5, aes(x = x, y = y)) + geom_point() + this.theme +
+  ggtitle(lab)
+```
+
+## Non-Linear Trend
+```{r}
+r <- round(cor(dat6)[1, 2], 2)
+lab <- paste("r = ", r)
+ggplot(dat6, aes(x = x, y = y)) + geom_point() + this.theme +
+  ggtitle(lab)
+```
+
+## Using the Correlation Coefficient
+So how do we use $r$?
+
+- First, make a scatterplot
+- There needs to be a **linear** association, or $r$ is meaningless
+- Check the sign: is the relationship positive or negative?
+- Check the value: how strong is the relationship?
+- Are there outliers? The correlation is very sensitive to them.
+
+Note:
+
+- We often use the terms **weak**, **moderate**, and **strong** to describe the relationship, but these are up to interpretation.
+
+## Horsepower vs. Engine Displacement
+```{r}
+color = c(rep("black", 30), "red", "black")
+r = round(cor(mtcars$hp, mtcars$disp), 2)
+lab <- paste("r = ", r)
+ggplot(mtcars2, aes(x = disp, y = hp)) + geom_point(size = 3, color = color) + this.theme +
+  ylab("Horsepower") + xlab("Displacement (cu. in.)") + ggtitle(lab)
+```
+
+## Horsepower vs. Engine Displacement
+```{r}
+r = round(cor(mtcars[-31,]$hp, mtcars[-31,]$disp), 2)
+lab <- paste("r = ", r)
+ggplot(mtcars2[-31,], aes(x = disp, y = hp)) + geom_point(size = 3) + this.theme +
+  ylab("Horsepower") + xlab("Displacement (cu. in.)") + ggtitle(lab)
+```
+
+## More Properties of Correlation
+
+- $r$ is **unitless**
+- $r$ is not affected by changes of center or scale
+- If we change units, the correlation will not change (e.g., $lbs \to kg$)
+- The correlation of $X$ and $Y$ is the same as the correlation between $Z_x$ and $Z_y$ (their z-scores)
+- The correlation stays the same if we flip $X$ and $Y$
+- Correlation only applies to relationships between **numeric** variables.  If there is an association involving categorical variables, it is **not** correlation.
+
+
+## Weight (lbs) vs. Fuel Efficiency
+```{r}
+r = round(cor(mtcars$wt, mtcars$mpg), 2)
+lab <- paste("r = ", r)
+ggplot(mtcars2, aes(x = wt*1000, y = mpg)) + geom_point(size = 3) + this.theme +
+  xlab("Weight (lbs)") + ylab("Fuel Efficiency (mpg)") + ggtitle(lab)
+```
+
+## Weight (kg) vs. Fuel Efficiency
+```{r}
+ggplot(mtcars2, aes(x = wt*454, y = mpg)) + geom_point(size = 3) + this.theme +
+  xlab("Weight (kg)") + ylab("Fuel Efficiency (mpg)") + ggtitle(lab)
+```
+
+## Weight vs. Fuel Efficiency (Z-Scores)
+```{r}
+ggplot(mtcars2, aes(x = scale(wt), y = scale(mpg))) + geom_point(size = 3) + this.theme +
+  xlab("Z_Weight") + ylab("Z_Fuel_Efficiency") + ggtitle(lab)
+```
+
+## Fuel Efficiency vs. Weight 
+```{r}
+ggplot(mtcars2, aes(y = wt*1000, x = mpg)) + geom_point(size = 3) + this.theme +
+  ylab("Weight (lbs") + xlab("Fuel Efficiency (mpg)") + ggtitle(lab)
+```
+
+## In StatCrunch
+
+Scatterplots:
+
+1. `Graph` $\to$ `Scatter Plot`
+2. `X Column` $\to$ Select your explanatory $(X)$ variable
+3. `Y Column` $\to$ Selected your response $(Y)$ variable
+4. `Compute!`
+
+Correlation:
+
+1. `Stat` $\to$ `Summary Stats` $\to$ `Correlation`
+2. `Select Column(s)` $\to$ Hold `Shift`/`Ctrl`/`Command` to select multiple variables (note: if you select more than two variables, it will find all pair-wise correlations)
+3. `Compute!`
+
+
+## Correlation $\ne$ Causation
+
+Must people are familiar with the phrase "correlation does not equal causation," but what does that really mean?
+
+- Even if we find a correlation between two variables, it does not mean that one causes the other.
+- This is especially common when two things both increase or decrease over time.
+- Both may be caused by other, unknown variables.  
+- We call these unknown variables **lurking variables** or **confounding variables**.
+
+For example:
+
+- What if we looked at the correlation between national ice cream sales and the number of forest fires, recorded for each month of the year?
+
+## Ice Cream Sales and Forest Fires
+```{r}
+month <- 1:12
+icecream <- -abs(6 - month)*100 + rnorm(12, 0, 50)
+icecream <- icecream + abs(min(icecream)) + 10
+fires <- -abs(6 - month)*30 + rnorm(12, 0, 10)
+fires <- fires + abs(min(fires)) + 5
+badcor <- data.frame(month = factor(month), fires = fires, icecream = icecream)
+r = round(cor(icecream, fires), 2)
+ggplot(badcor, aes(x = fires, y = icecream)) + geom_point(size = 3) + 
+  xlab("Number of Forest Fires") + ylab("Total Ice Cream Sales (millions of dollars)") +
+  ggtitle(paste("r =", r)) + this.theme
+```
+
+## Ice Cream Sales and Forest Fires
+
+It certainly looks like there is a relationship.
+
+- As the number of forest fires increase, the amount of ice cream being sold does as well
+- If you open a pint of Ben & Jerries, does this light a patch of brush in California?
+- The more likely explanation is the there is at least one lurking variable
+
+What could it be?
+
+- Both could be related to the month in which the information was collected
+- Additionally, certain months tend to be hotter and drier.
+- Both of these conditions lead to people wanting ice cream and forest fires being easier to start
+
+## Forest Fires vs. Month
+```{r}
+ggplot(badcor, aes(x = month, y = fires)) + geom_point(size = 3) + this.theme +
+  ylab("Number of Forest Fires")
+```
+
+## Ice Cream Sales vs. Month
+```{r}
+ggplot(badcor, aes(x = month, y = icecream)) + geom_point(size = 3) + this.theme +
+  ylab("Total Ice Cream Sales (millions of dollars)")
+```
+
+## Reporting Correlation
+
+Employee Salaries and Productivity, $r = .8$: 
+
+- **Bad**:  Raising salaries increases productivity.
+- **Good**:  Employees with higher salaries tend to be more productive.
+
+Red Wine and Cholesterol,  $r = −0.99$:  
+
+- **Bad**:  This proves that drinking more red wine lowers cholesterol.  
+- **Good**:  There is a strong negative association between red wine consumption and cholesterol level.
+
+Parents' and Children's Education Levels (association, not correlation):
+
+- **Bad**:  A child that has two educated parents will graduate from college.
+- **Good**:  Children whose parents are educated are more likely to graduate from college
+
+## Summary
+
+- We can use scatterplots to find relationships and outliers between two numeric variables
+- The $X$ variable is the **explanatory** variable
+- The $Y$ variable is the **response** variable
+- A relationship between variables is called **association**
+- We can measure the strength of a **linear relationship** between two **numeric variables** using **correlation**
+- Correlation doesn't neccessarily imply causation, there may be lurking variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

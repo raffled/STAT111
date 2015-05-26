@@ -1,12 +1,12 @@
 ---
-title: 'Chapter 5'
-subtitle: 'The Standard Deviation as  Ruler and the Normal Model'
+title: "Chapter 5"
 author: "D. Raffle"
 date: "5/20/2015"
 output:
   ioslides_presentation:
     incremental: yes
     widescreen: yes
+subtitle: The Standard Deviation as  Ruler and the Normal Model
 ---
 
 ```{r global_options, include=FALSE}
