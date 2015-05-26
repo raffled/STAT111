@@ -297,6 +297,18 @@ Note:
 
 - We often use the terms **weak**, **moderate**, and **strong** to describe the relationship, but these are up to interpretation.
 
+## Outliers in Correlation
+
+- $r$ is the strength of the overall linear relationship in the data
+- If we have a point that is far away from the rest, it will decrease the strength of the relationship
+- If we remove an outlier, it will drive $r$ away from 0 and towards -1 or 1
+- If we add an outlier, it will drive $r$ towards 1
+
+These relationships also hold if we alter a point's values (e.g., correct a typo in the data set)
+
+- Moving a point towards the rest improves $r$
+- Moving it away from the rest punishes $r$
+
 ## Horsepower vs. Engine Displacement
 ```{r}
 color = c(rep("black", 30), "red", "black")
