@@ -1,0 +1,123 @@
+---
+title: "Chapter 9"
+author: "D. Raffle"
+date: "5/27/2015"
+output:
+  ioslides_presentation:
+    incremental: yes
+    widescreen: yes
+subtitle: "Understanding Randomness"
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center", 
+                      message = FALSE, warning=FALSE, cache = TRUE) 
+library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+library(tidyr, quietly = TRUE, warn.conflicts = FALSE)
+library(ggplot2, quietly = TRUE, warn.conflicts = FALSE)
+ps <- element_text(size = 12)
+ps2 <- element_text(size = 15)
+ps3 <- element_text(size = 20)
+this.theme <- theme(axis.title.x = ps2, axis.title.y = ps2, axis.text.x = ps, axis.text.y = ps, 
+                    title = ps3,
+                    legend.text = ps)
+```
+
+## What is randomness?
+
+Most people have some idea what a random event is.
+
+- Flipping a coin
+- Drawing a card from a deck
+- Rolling a die
+
+The concept of randomness isn't just restricted to games.  In statistics, we rely on the concept of randomness.
+
+- To describe uncertainty
+- To collect **representative** samples
+- To come up with methods to draw conclusions and make estimations
+
+## Defining Randomness
+
+What does it mean for something to be random?  First, we need to establish definitions
+
+- Let's call something which has a random outcome an **trial**.
+- We'll call the possible outcome of a trial **events**.
+
+So what makes a trial random?
+
+- For the trial, we don't know what event will occur ahead of time
+
+Example: Flipping a coin
+
+- The actual flipping of the coin is a trial
+- The possible events are getting a heads or getting a tails
+
+## Random $\ne$ Unpredictable 
+Random trials only have a certain number of outcomes
+
+- If we flip a coin, it can only land heads up or tails up
+- If the coin is fair, both events are equally likely
+
+They are well-behaved in the longterm
+
+- If we flip a coin once, we don't which side will land up
+- In the longterm, however, we should see about half heads and half tails
+
+## In Real Life
+
+We can often view real-world events as random trials.  Think about a morning commute.
+
+- When we leave in the morning, we're can't be sure exactly how long it will take to get to work (or school)
+- Traffic or construction can hold us up
+- It's not completely unpredictable, however
+- We might know how long an average (or expected) commute is, and can plan around it
+
+## Using Randomness
+
+Why do statisticians care about randomness?
+
+- We usually need to estimate values we don't know, like the percentage of people who will vote for a presidential candidate
+- We can try to estimate this by asking a fraction of the people as they leave their polls
+- This only works if we get a representative cross section 
+- If we poll too many people from one party, we might predict that they'll win when they didn't
+- We ensure that our samples are representative by making sure they are random
+- Unfortunately, people are very poor judges of operating randomly
+
+## Which Plot is More Random?
+
+```{r}
+dat1 <- data.frame(
+  x = rep(seq(0, 100, 10), each = 11),
+  y = rep(seq(0, 100, 10), 11),
+  lab = "A")
+dat2 <- data.frame(x = runif(100, 1, 100), y = runif(100, 1, 100), lab = "B")
+dat <- rbind(dat1, dat2)
+ggplot(dat, aes(x = x, y = y)) + facet_grid(~lab) + this.theme + 
+  geom_jitter(position = position_jitter(width = 5, height = 5))
+```
+
+## Pick a Number at Random
+
+$$1\quad 2\quad 3\quad 4$$
+
+Did we get random results?
+
+- Almost 75% of people choose 3
+- 20% chooose 3 or 4
+- Only 5% of people choose 1
+
+## So what do we do?
+
+How can statisticians and researchers get random samples if we can't trust ourselves?
+
+- Historically, we used what are called random number tables
+- Modern researchers used software
+
+
+
+
+
+
+
+
