@@ -89,7 +89,7 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">5/27/2015</p>
+            <p style="margin-top: 6px; margin-left: -2px;">5/28/2015</p>
           </hgroup>
   </slide>
 
@@ -196,9 +196,24 @@
 <li>In statistics, we always use the variable \(n\) for sample size</li>
 </ul>
 
+</article></slide><slide class=''><hgroup><h2>Sample Size</h2></hgroup><article  id="sample-size">
+
+<p>For example, say we wanted to study whether or not being a member of a social fraternity or sorority affects academic performance, as measured by GPA, for WVU students. We want to be able to detect a half-point difference. There are approx. 23,000 undergraduates at WVU.</p>
+
+<ul class = 'build'>
+<li>Using statistical theory, we calculate that we need a sample size of \(n = 100\) from each group</li>
+</ul>
+
+<p>What if we wanted to be able to detect the same difference in all 31 million American undergraduates?</p>
+
+<ul class = 'build'>
+<li>Everything else being equal (i.e., means and standard deviations), we still only need \(n=100\)</li>
+<li>The sample size is important, not the percentage of the population.</li>
+</ul>
+
 </article></slide><slide class=''><hgroup><h2>How big of a sample do we need?</h2></hgroup><article  id="how-big-of-a-sample-do-we-need">
 
-<p>It depends on what we&#39;re doing</p>
+<p>The sample size we need depends on what we&#39;re doing</p>
 
 <ul class = 'build'>
 <li>For proportions or percentages, we usually need several hundred individuals</li>
@@ -206,10 +221,26 @@
 <li>In general, the more precise the study needs to be, the larger the sample size needs to be</li>
 </ul>
 
+<p>Major Factors</p>
+
+<ul class = 'build'>
+<li>The size of the difference we want to detect (e.g., the difference between 3.0 and 3.1 vs. 3.0 and 3.5)</li>
+<li>The variability of the population</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Sample Size</h2></hgroup><article  id="sample-size-1">
+
+<p>Generally speaking,</p>
+
+<ul class = 'build'>
+<li>The larger the sample size, the more reliable the results will be</li>
+<li>To represent a diverse population (with many sub-groups, like race or work industry), we&#39;ll need a pretty big sample</li>
+</ul>
+
 <p>Getting a large sample can be hard</p>
 
 <ul class = 'build'>
-<li>For medical studies, it can be very expensive</li>
+<li>For experiments like medical studies, it can be very expensive</li>
 <li>In telephone polls, only 38% of people usually answer, so they need to sample 2632 people to get 1000 responses</li>
 </ul>
 
@@ -244,8 +275,9 @@
 <p>So why don&#39;t we sample instead?</p>
 
 <ul class = 'build'>
-<li>Politicians don&#39;t like it</li>
-<li>Statisticians think we should</li>
+<li>Politicians don&#39;t like it (the Constitution says we need to <strong>count</strong> everyone, not estimate the count)</li>
+<li>Statisticians think we should because we&#39;ll always miss people, and therefore have biased results</li>
+<li>Random sampling would be more reliable</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Populations and Parameters</h2></hgroup><article  id="populations-and-parameters">
@@ -257,7 +289,7 @@
 <ul class = 'build'>
 <li>They used a <strong>sample proportion</strong> and made an <strong>inference</strong> about the <strong>population proportion</strong> (more on that in later chapters)</li>
 <li>A <strong>parameter</strong> is a number that is used to model a <strong>population</strong></li>
-<li>a <strong>sample</strong> is a number calculated from the <strong>sample</strong> (usually to estimate the parameter)</li>
+<li>a <strong>statistic</strong> is a number calculated from the <strong>sample</strong> (usually to estimate the parameter)</li>
 <li>Note that we <em>usually</em> use Roman letters \((\bar{x}, s)\) for statistics and Greek letters \((\mu, \sigma)\)</li>
 </ul>
 
@@ -272,17 +304,17 @@
 <tr class="odd">
 <td align="left">Mean</td>
 <td align="left">\(\bar{x}\)</td>
-<td align="left">\(\mu\) (pronounced &quot;mew&quot;)</td>
+<td align="left">\(\mu\) (mu, pronounced &quot;mew&quot;)</td>
 </tr>
 <tr class="even">
 <td align="left">Standard Deviation</td>
 <td align="left">\(s\)</td>
-<td align="left">\(\sigma\)</td>
+<td align="left">\(\sigma\) (sigma&quot;)</td>
 </tr>
 <tr class="odd">
 <td align="left">Correlation</td>
 <td align="left">\(r\)</td>
-<td align="left">\(\rho\) (pronounced &quot;row&quot;)</td>
+<td align="left">\(\rho\) (rho, pronounced &quot;row&quot;)</td>
 </tr>
 <tr class="even">
 <td align="left">Regression Coefficients</td>
@@ -376,6 +408,7 @@
 <ul class = 'build'>
 <li>Sampling variability is a natural part of statistics, not a problem</li>
 <li>All statistical tests are designed to account for this variability</li>
+<li>In fact, if there were no variability there would be no point in statistics</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Other Sampling Designs</h2></hgroup><article  id="other-sampling-designs">
@@ -387,11 +420,12 @@
 <li>If the population is very spread out geographically it can be very expensive</li>
 </ul>
 
-<p>There are two alternative sampling methods we&#39;ll mention:</p>
+<p>There are three alternative sampling methods we&#39;ll mention:</p>
 
 <ul class = 'build'>
 <li>Stratified Sampling</li>
 <li>Cluster Sampling</li>
+<li>Systematic Sampling</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Stratified Sampling</h2></hgroup><article  id="stratified-sampling">
@@ -443,9 +477,10 @@
 <ul class = 'build'>
 <li>We want to sample 2000 trees in a national forest</li>
 <li>Conducting an SRS would be impractical</li>
-<li>Instead, we divide the forest into grids of 100 trees</li>
-<li>We then select 20 of these grids</li>
+<li>Instead, we divide the forest into grids of 100 trees and select 20 grids</li>
 </ul>
+
+<p>Cluster sampling is ideal when the data is in distinct groups, or very spread out</p>
 
 </article></slide><slide class=''><hgroup><h2>Clusters vs. Strata</h2></hgroup><article  id="clusters-vs.-strata">
 
@@ -481,7 +516,12 @@
 <li>Count the words on every 80th line of a book</li>
 </ul>
 
-<p>Systematic sampling is cheaper than other methods, but requires very large samples to be representative</p>
+<p>Why don&#39;t we always do this?</p>
+
+<ul class = 'build'>
+<li>It&#39;s not a truly <strong>random sample</strong></li>
+<li>For large sample sizes, it can be close enough</li>
+</ul>
 
 </article></slide><slide class=''><hgroup><h2>Name the Sampling Strategy</h2></hgroup><article  id="name-the-sampling-strategy">
 
@@ -555,7 +595,7 @@
 
 </article></slide><slide class=''><hgroup><h2>Bad Sampling Designs</h2></hgroup><article  id="bad-sampling-designs">
 
-<p>There are several bad, but common, sampling designs which don&#39;t give representative results.</p>
+<p>There are several bad, but common, sampling problems which don&#39;t give representative results.</p>
 
 <ol class = 'build'>
 <li>Voluntary Response Samples</li>
@@ -600,7 +640,7 @@
 
 </article></slide><slide class=''><hgroup><h2>Bad Sampling Frames</h2></hgroup><article  id="bad-sampling-frames">
 
-<p>We can get a <strong>bad sampling frame</strong> if we miss large groups in our population. Common groups that are missed are:</p>
+<p>We can get a <strong>bad sampling frame</strong> if our sampling method miss large groups in our population. Common groups that are missed are:</p>
 
 <ul class = 'build'>
 <li>Prisoners</li>
