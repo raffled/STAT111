@@ -75,14 +75,14 @@ We can often view real-world events as random trials.  Think about a morning com
 
 ## Using Randomness
 
-Why do statisticians care about randomness?
+Why do statisticians care about randomness?  Mostly to eliminate **bias** in our studies.
 
 - We usually need to estimate values we don't know, like the percentage of people who will vote for a presidential candidate
 - We can try to estimate this by asking a fraction of the people as they leave their polls
 - This only works if we get a representative cross section 
 - If we poll too many people from one party, we might predict that they'll win when they didn't
 - We ensure that our samples are representative by making sure they are random
-- Unfortunately, people are very poor judges of operating randomly
+- Unfortunately, people are very poor at operating randomly
 
 ## Which Plot is More Random?
 
@@ -114,8 +114,10 @@ How can statisticians and researchers get random samples if we can't trust ourse
 - Historically, we used what are called random number tables
 - Modern researchers used software
 
-
-
+```{r, echo = TRUE}
+sample(1:20, 5)
+rnorm(n = 5, mean = 100, sd = 5)
+```
 
 
 

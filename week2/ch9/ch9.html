@@ -162,7 +162,7 @@
 
 </article></slide><slide class=''><hgroup><h2>Using Randomness</h2></hgroup><article  id="using-randomness">
 
-<p>Why do statisticians care about randomness?</p>
+<p>Why do statisticians care about randomness? Mostly to eliminate <strong>bias</strong> in our studies.</p>
 
 <ul class = 'build'>
 <li>We usually need to estimate values we don&#39;t know, like the percentage of people who will vote for a presidential candidate</li>
@@ -170,7 +170,7 @@
 <li>This only works if we get a representative cross section</li>
 <li>If we poll too many people from one party, we might predict that they&#39;ll win when they didn&#39;t</li>
 <li>We ensure that our samples are representative by making sure they are random</li>
-<li>Unfortunately, people are very poor judges of operating randomly</li>
+<li>Unfortunately, people are very poor at operating randomly</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Which Plot is More Random?</h2></hgroup><article  id="which-plot-is-more-random">
@@ -196,7 +196,15 @@
 <ul class = 'build'>
 <li>Historically, we used what are called random number tables</li>
 <li>Modern researchers used software</li>
-</ul></article></slide>
+</ul>
+
+<pre class = 'prettyprint lang-r'>sample(1:20, 5)</pre>
+
+<pre >## [1]  2 19  7 10  9</pre>
+
+<pre class = 'prettyprint lang-r'>rnorm(n = 5, mean = 100, sd = 5)</pre>
+
+<pre >## [1]  95.85033  96.60495  99.02627  95.46636 101.26399</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
