@@ -430,7 +430,7 @@ All of these problems lead to biased results.  There are two major types of bias
 - Interviewees try to please or impress interviewers
 - People don't want to embarass themselves or admit their flaws
 - People hide or embellish facts about themselves like income or age
-- The questions can be leading or steer respondents in certain directions ("Should be improve", "Should be cut funding", etc).
+- The questions can be leading or steer respondents in certain directions ("Should be improve" vs. "Should cut funding", etc).
 
 ## Summary
 

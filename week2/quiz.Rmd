@@ -8,7 +8,7 @@ output:
     widescreen: yes
 ---
 
-## Answer Each Question on a separate piece of paper:
+## Solutions
 
 What Values can $R^2$ take?  
 

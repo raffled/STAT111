@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pop Quiz</title>
+  <title>Chapter 11</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,8 +25,9 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Pop Quiz',
-                        useBuilds: true,
+                title: 'Chapter 11',
+                        subtitle: 'Experiments and Observational Studies',
+                useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
         enableTouch: true,
@@ -88,44 +89,444 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">5/27/2015</p>
+            <p style="margin-top: 6px; margin-left: -2px;">6/1/2015</p>
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Answer Each Question on a separate piece of paper:</h2></hgroup><article  id="answer-each-question-on-a-separate-piece-of-paper">
+<slide class=''><hgroup><h2>Recall</h2></hgroup><article  id="recall">
 
-<p>What Values can \(R^2\) take?</p>
+<p>When we study populations:</p>
 
 <ul class = 'build'>
-<li>\(0 \le R^2 \le 1\)</li>
+<li>We are usually interested in some number or <strong>parameter</strong> that describes the population.</li>
+<li>We estimate parameters with <strong>statistics</strong>, which are calculated from <strong>samples</strong></li>
+<li>Samples are randomly drawn from the population of interest</li>
+<li>If our sample is <strong>representative</strong>, our statistics will be good estimators of the parameters.</li>
 </ul>
 
-<p>What do we call the distance from our line to an observed value of \(Y\)?</p>
+</article></slide><slide class=''><hgroup><h2>Experiments and Observational Studies</h2></hgroup><article  id="experiments-and-observational-studies">
+
+<p>There are two major types of studies:</p>
 
 <ul class = 'build'>
-<li>A residual \((y - \hat{y})\)</li>
+<li>Experiments</li>
+<li>Observational Studies</li>
 </ul>
 
-<p>If \(r\) is positive, will the slope \((b_1)\) be positive or negative?</p>
+<p>Observational studies can be further broken down into:</p>
 
 <ul class = 'build'>
-<li>If \(r\) is positive, there is a positive correlation, so the slope <strong>must</strong> be positive</li>
+<li>Prospective Studies</li>
+<li>Retrospective Studies</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study">
 
-<p>If we remove an outlier with an extreme value in \(Y\), will \(R^2\) go up or down?</p>
+<p>Consider the following study:</p>
 
 <ul class = 'build'>
-<li>If we remove an outlier, we remove a point far away from the line</li>
-<li>As a group, the points will now fit the shape of the line better</li>
-<li>If the fit is better, \(R^2\) will move closer to 1</li>
+<li>To examine the effect of music programs on academic performance, a sample of students music students and non-music students were collected at a particular high school.</li>
 </ul>
 
-<p>What does the acronym LSR stand for?</p>
+<p>They found the following average GPAs:</p>
 
 <ul class = 'build'>
-<li><strong>L</strong>east <strong>S</strong>quares <strong>R</strong>egression</li>
+<li>Music students: 3.59</li>
+<li>Non-Music Students: 2.91</li>
+</ul>
+
+<p>What does this tell us?</p>
+
+<ul class = 'build'>
+<li>Should every student be forced to play an instrument?</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Observational Studies</h2></hgroup><article  id="observational-studies">
+
+<p>Key characteristics:</p>
+
+<ul class = 'build'>
+<li>Researchers simply <strong>observe</strong> the subjects</li>
+<li>Various measurements or values are recorded for each subject</li>
+<li>Good for describing or discovering relationships, especially in large populations</li>
+<li><strong>Cannot</strong> prove cause-and-effect, only provide evidence</li>
+<li>Handling lurking or confounding variables can be tough</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study-1">
+
+<p>For our students:</p>
+
+<ul class = 'build'>
+<li>This was an observational study</li>
+<li>Did they prove that playing an instrument increases grades?</li>
+<li>Other factors could be at play</li>
+<li>Families with more money can afford musical instruments and pay for tutors</li>
+<li>If you have to work after school, you don&#39;t have time for band practice or homework</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Retrospective Studies</h2></hgroup><article  id="retrospective-studies">
+
+<p>Retrospective studies collect data on events that already occured</p>
+
+<ul class = 'build'>
+<li>This is the most common type of retrospective study</li>
+</ul>
+
+<p>They can be unreliable:</p>
+
+<ul class = 'build'>
+<li>Rely on subjects&#39; memories</li>
+<li>Historical records can be incomplete</li>
+<li>We only have information for people &quot;in the system&quot;</li>
+</ul>
+
+<p>Examples:</p>
+
+<ul class = 'build'>
+<li>Medical Records</li>
+<li>Customer History</li>
+<li>Academic Records</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Prospective Studies</h2></hgroup><article  id="prospective-studies">
+
+<p>Prospective studies identify subjects first, then make observations as time goes on</p>
+
+<ul class = 'build'>
+<li>This is commonly used in genetics or family studies</li>
+</ul>
+
+<p>Pros:</p>
+
+<ul class = 'build'>
+<li>Better for finding causal relationships</li>
+<li>Can record any variables we want, not just what&#39;s already in records</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul class = 'build'>
+<li>Takes a long time (often years)</li>
+<li>Can be expensive</li>
+<li>Rare events require very large samples</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study-2">
+
+<p>The study on music and academic performance could have been either type.</p>
+
+<p>Retrospective:</p>
+
+<ul class = 'build'>
+<li>Choose a random sample of students in a given year</li>
+<li>Examine academic records of these students</li>
+<li>Calculate GPA</li>
+</ul>
+
+<p>Prospective:</p>
+
+<ul class = 'build'>
+<li>Choose a random sample of kindergarten students</li>
+<li>Record their performance as they go through school and if/when they start in a music program</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study-3">
+
+<p>Which would have been better?</p>
+
+<p>Retrospective:</p>
+
+<ul class = 'build'>
+<li>Can be done very quickly at any point in time</li>
+<li>Very cheap &#8211; just need to get records</li>
+</ul>
+
+<p>Prospective:</p>
+
+<ul class = 'build'>
+<li>We can see if performance changed <strong>for each student</strong> as they picked up an instrument</li>
+<li>We can also track if they pick up a part-time job or have any family problems</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Experiments</h2></hgroup><article  id="experiments">
+
+<p>While observational studies have researchers passively observing, researchers actively impose <strong>treatments</strong> on the subjects.</p>
+
+<p>Examples:</p>
+
+<ul class = 'build'>
+<li>Clinical trials</li>
+<li>Scientific experiments</li>
+<li>Marketing trials</li>
+<li>Psychological experiments</li>
+</ul>
+
+<p>Experiments are the <strong>only</strong> type of study that can prove cause-and-effect.</p>
+
+</article></slide><slide class=''><hgroup><h2>Treatments</h2></hgroup><article  id="treatments">
+
+<p>In experiments, we call the explanatory variables <strong>factors</strong> and their possible values <strong>levels</strong>. A <strong>treatment</strong> is a unique combination of factor levels.</p>
+
+<p>Say we wanted to test the affects of medicine \(X\) taken every 2 hours or every 4 hours, compared to a placebo.</p>
+
+<ul class = 'build'>
+<li>The factor <em>medicine</em> has levels: &quot;X&quot;, &quot;Placebo&quot;</li>
+<li>The factor <em>interval</em> has levels: &quot;2 hours&quot;, &quot;4 hours&quot;</li>
+<li>We get four treatments: &quot;X, 2 hours&quot;; &quot;X, 4 hours&quot;; &quot;Placebo, 2 hours&quot;; &quot;Placebo, 4 hours&quot;</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Performing Experiments</h2></hgroup><article  id="performing-experiments">
+
+<p>Designing an experiment is essentially just following the scientific method</p>
+
+<ol class = 'build'>
+<li>Come up with a hypothesis (question)</li>
+<li>Identify the <strong>factors</strong></li>
+<li>Identify the <strong>response</strong></li>
+<li>Select the <strong>experimental units</strong> (subjects, participants, classroom, petri dishes, etc.)</li>
+<li>Decide on the <strong>levels</strong> of the factors and make <strong>treatments</strong></li>
+<li>Assign treatments to experimental units</li>
+<li>Analyze the results and compare treatments</li>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2>Assigning Participants to Treatments</h2></hgroup><article  id="assigning-participants-to-treatments">
+
+<p>For any experiment (especially those with humans), decided who gets which treatment is important.</p>
+
+<ul class = 'build'>
+<li>Never let the subjects choose (or even know)</li>
+<li>Don&#39;t assign people to treatments based on what you think they need (giving the sickest the new drug)</li>
+<li>In fact, never assign treatments yourself</li>
+<li>Give each participant a label and let software <strong>randomly</strong> assign treatments</li>
+</ul>
+
+<p>There&#39;s one catch</p>
+
+<ul class = 'build'>
+<li>Experiments can introduce ethical dilemmas</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study-4">
+
+<p>Say we want to study the relationship between Post-Traumatic Stress Disorder (PTSD) and suicide in veterans. What would the different studies look like?</p>
+
+<p>Retrospective:</p>
+
+<ul class = 'build'>
+<li>Examine medical records of soldiers and compare suicide rates of those with and without PTSD</li>
+</ul>
+
+<p>Prospective:</p>
+
+<ul class = 'build'>
+<li>Track soldiers as they get discharged and watch their mental health</li>
+</ul>
+
+<p>Experiment:</p>
+
+<ul class = 'build'>
+<li>Randomly assign soldiers to high-pressure combat situations where they&#39;d be likely to develop PTSD and see if they commit suicide in the following years</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Experiments: Major Principles</h2></hgroup><article  id="experiments-major-principles">
+
+<p>There are four major principles in experimental design:</p>
+
+<ol class = 'build'>
+<li>Control</li>
+<li>Randomization</li>
+<li>Replication</li>
+<li>Blocking</li>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2>Control</h2></hgroup><article  id="control">
+
+<p><strong>Control</strong> in an experiment means regulating as many conditions as possible, like:</p>
+
+<ul class = 'build'>
+<li>Temperature</li>
+<li>Time of Day</li>
+<li>Classroom conditions</li>
+</ul>
+
+<p>Why?</p>
+
+<ul class = 'build'>
+<li>Controlling allows us to isolate the treatments we want to study</li>
+<li>This eliminates (or at least mitigates) the effects of lurking variables</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Randomization</h2></hgroup><article  id="randomization">
+
+<p>Randomizing the assignment of treatments helps us by:</p>
+
+<ul class = 'build'>
+<li>Equalizing the effects of uncontrollable variation across the sample</li>
+<li>Distributes uncontrollable effects (lurking variables) evenly across the groups</li>
+<li>The effects of lurking variables will &quot;average out&quot; so they don&#39;t matter</li>
+</ul>
+
+<p>Generally, we control what we can and randomize what we can&#39;t.</p>
+
+</article></slide><slide class=''><hgroup><h2>Replication</h2></hgroup><article  id="replication">
+
+<p>When we <strong>replicate</strong>, we apply a treatment to more than once</p>
+
+<ul class = 'build'>
+<li>We assign multiple subjects the same treatment</li>
+<li>Ideally, we repeat the entire experiment on a new sample</li>
+</ul>
+
+<p>Why?</p>
+
+<ul class = 'build'>
+<li>This helps us mitigate the chances of our results being a coincidence</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Blocking</h2></hgroup><article  id="blocking">
+
+<p>When we <strong>block</strong>, we group similar observations together and apply all treatments within the block.</p>
+
+<p>Why block?</p>
+
+<ul class = 'build'>
+<li>By blocking, we get more precise results by eliminating variation between the groups</li>
+</ul>
+
+<p>Examples</p>
+
+<ul class = 'build'>
+<li>Blocking by gender if we expect men and women to react differently</li>
+<li>Blocking by age if we think it has a large effect</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study-5">
+
+<p>A certain researcher thinks that taking an herbal supplement will help insomniacs get to sleep.</p>
+
+<p>What is the hypothesis?</p>
+
+<ul class = 'build'>
+<li>Taking the supplement decreases the time it takes for insomniacs to fall asleep</li>
+</ul>
+
+<p>What is the factor?</p>
+
+<ul class = 'build'>
+<li>Take the herbal supplement or don&#39;t take it</li>
+</ul>
+
+<p>What is the response?</p>
+
+<ul class = 'build'>
+<li>The time it takes to fall asleep</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study-6">
+
+<p>What are our experimental units?</p>
+
+<ul class = 'build'>
+<li>Individuals with insomnia</li>
+</ul>
+
+<p>What are our treatments?</p>
+
+<ul class = 'build'>
+<li>Placebo or supplement (or various doses)</li>
+</ul>
+
+<p>How do we assign treatments?</p>
+
+<ul class = 'build'>
+<li>Randomly, and without the subjects knowing</li>
+</ul>
+
+<p>Analyzing</p>
+
+<ul class = 'build'>
+<li>Did the people who got the supplement fall asleep faster, on average?</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Case Study</h2></hgroup><article  id="case-study-7">
+
+<p>Should we block here?</p>
+
+<ul class = 'build'>
+<li>People in different lines of work will have different stress levels</li>
+<li>Stress level can affect sleeping habits, so we should consider blocking on industry</li>
+<li>The supplement might affect men and women differently, so we might want to block on gender</li>
+<li>People often sleep less as they get older, so blocking by age range might be a good idea</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>The Placebo Effect</h2></hgroup><article  id="the-placebo-effect">
+
+<p>The <strong>control group</strong> is a group that doesn&#39;t get a treatment. Unfortunately, there&#39;s a complication called the <strong>placebo effect</strong></p>
+
+<ul class = 'build'>
+<li>People subconsciously react when they&#39;re told they might react to something.</li>
+<li>This means that we can&#39;t just give some people pills and not give anything to the others &#8211; our results might just be due to the placebo effect.</li>
+<li>To get around this, we give everyone a treatment, but some people get an inert treatment called a <strong>placebo</strong></li>
+</ul>
+
+<p>This isn&#39;t just limited to subjects</p>
+
+<ul class = 'build'>
+<li>If the researcher knows who gets the drug in a medical trial, they might act more hopeful when examining them</li>
+<li>The researcher can unknowingly influence the results of the trial</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Control Groups</h2></hgroup><article  id="control-groups">
+
+<p>We can mitigate the effects of the placebo effect using <strong>blinding</strong></p>
+
+<p>Single blinding:</p>
+
+<ul class = 'build'>
+<li>The subjects don&#39;t know whether they get the treatment or a placebo</li>
+</ul>
+
+<p>Double blinding:</p>
+
+<ul class = 'build'>
+<li>Neither the subject nor the researcher know whether the subject got the treatment or a placebo</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Lurking and Confounding</h2></hgroup><article  id="lurking-and-confounding">
+
+<p>Thus far, we&#39;ve used lurking and confounding interchangeably when a third variable affects the relationship between two that we are interested in. There is a subtle difference.</p>
+
+<p>Say we are interested in how \(X\) affects \(Y\), but there is a third factor \(W\)</p>
+
+<p>Lurking Variable:</p>
+
+<ul class = 'build'>
+<li>\(W\) affects both \(X\) and \(Y\)</li>
+<li>\(X\) and \(Y\) are not related</li>
+<li>This can make it look like \(X\) and \(Y\) are associated</li>
+<li>Forest fires and ice creams sales are both linked to temperature</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Confounding Variables</h2></hgroup><article  id="confounding-variables">
+
+<ul class = 'build'>
+<li>\(W\) directly affects \(X\)</li>
+<li>\(W\) may also be related to \(Y\)</li>
+<li>If we don&#39;t know about \(W\), it will make it look like \(X\) causes \(Y\) exclusively</li>
+<li>Drinking habits and age of death might be related</li>
+<li>Drinking habits might also be related to social class</li>
+<li>Social class can also affect the age of death</li>
+<li>If we control for social class, we might not see an association between drinking and age of death</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Summary</h2></hgroup><article  id="summary">
+
+<ul class = 'build'>
+<li>Observational studies are when researchers simply observe their subjects. They can be retrospective or prospective.</li>
+<li>In experiments, researchers actively impose a treatment on the subjects</li>
+<li>We can control for the placebo effect using blinding</li>
+<li>We can control for lurking and confounding variables with randomization, replication, and blocking</li>
 </ul></article></slide>
 
 

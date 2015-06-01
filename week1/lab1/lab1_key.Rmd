@@ -37,70 +37,105 @@ Write your final answer as a sentence and include all steps you used to get ther
 
 ### 1.) List each variable and its type (categorical/quantitative). 
 ```{r}
+library(ggplot2)
 mtcars2 <- read.table("mtcars2.tsv", header = T, sep = "\t")
-colnames(mtcars2)
+data.frame(Variable = colnames(mtcars2)[-1], 
+           Type = c("Numeric", "Categorical", "Numeric", "Numeric", "Numeric",
+                    "Numeric", "Categorical", "Categorical"))
 ```
 
 ### 2.) Report the Frequency and Relative Frequency Tables of `cyl`.  Describe the distribution.
 
 ```{r}
-table(mtcars2$cyl)
-table(mtcars2$cyl)/nrow(mtcars2)*100
+counts <- summary(factor(mtcars2$cyl))
+n <- nrow(mtcars2)
+data.frame(Frequency = counts, 
+           "Rel. Freq" = counts/n*100)
 ```
+
+Most of the cars in the data set have eight cylinders, while six is the least common.
 
 ### 3.) Sketch a Bar Plot of `am`.  Which Transmission type is more common?
 
 ```{r}
-plot(factor(mtcars2$am))
+ggplot(mtcars2, aes(x = am)) + geom_bar()
 ```
+
+Manual cars are more common than automatics in this data set.
 
 ### 4.) Make a Histogram of `hp` (you do not need to sketch it).  Describe the shape of the distribution.
 
 ```{r}
-hist(mtcars2$hp, col = "cornflowerblue")
+ggplot(mtcars2, aes(x = hp)) + geom_histogram(binwidth = 50, color = "grey80")
 ```
 
-### 5.) Which Measures of Center are better for `hp`?  Report them.
+The distribution of horsepower is right-skewed and unimodal with no outliers.
+
+### 5.) Which Measure of Center is better for `hp`?  Report it.
 
 ```{r}
 summary(mtcars2$hp)
 ```
 
+Because the distribution is right-skewed, the median (123 hp) is a more accurate measure of center.
+
 ### 6.) Sketch a Side-by-Side Boxplot of `hp` grouped by `am`.  Describe the differences in the distributions.
 
 ```{r}
-boxplot(hp ~ am, mtcars2)
+ggplot(mtcars2, aes(x = am, y = hp, fill = am)) + geom_boxplot()
 ```
 
-### 7.) Sketch the QQ Plot of `mpg`.  Is the distribution approximately Normal?  
+Manuals have higher horsepower on average and more variation, while there are two automatics with unusually high horsepower.
+
+### 7.) Sketch the QQ Plot of `mpg`.  Is the distribution approximately Normal?
+```{r, echo = FALSE}
+gg_qq <- function(X, x){
+  y <- quantile(X$mpg, c(0.25, 0.75))
+  x <- qnorm(c(0.25, 0.75))
+  slope <- diff(y)/diff(x)
+  int <- y[1L] - slope * x[1L]
+  p <- ggplot(X, aes(sample=mpg)) +
+        stat_qq(size = 2) +
+        geom_abline(slope = slope, intercept = int, color="blue") +
+        xlab("Normal Quantile") + ylab("Observed Quantile")
+  return(p)
+}
+```
 
 ```{r message = FALSE, warning = FALSE}
 library(car)
-qqPlot(mtcars2$mpg,, pch = 20)
+gg_qq(mtcars2, "mpg")
 ```
+
+Because fuel efficiency generally follows the reference line, we can conclude that it is approximately normal.
 
 ### 8.) If a certain car had a fuel efficiency of 22 MPG, would it be more rare for an automatic or a manual car?  Show your work.
 
 ```{r}
 by(mtcars2, mtcars2$am, function(tr) round(data.frame(mean = mean(tr$mpg), sd = sd(tr$mpg)), 2))
-(22 - 24.39)/6.17
-(22 - 17.15)/3.83
+(z.auto <- (22 - 24.39)/6.17)
+(z.manual <- (22 - 17.15)/3.83)
 ```
+
+22 mpg would be 1.27 standard deviations above the mean for manuals, and 0.39 standard deviations below the mean for automatics.  This means that it would be more rare for a manual car to get 22 mpg.
 
 ### 9.) Assume that `MPG` $\sim N(\mu = 20, \sigma = 6)$.  What is the 90% percentile for the `MPG` of all cars?  
 I.e., if $P(MPG \le x) = 0.9$, what is $x$?
 
 ```{r}
-qnorm(.9, 20, 6)
+qnorm(.9, mean = 20, sd = 6)
 ```
+
+The 90% of cars have fuel efficiency less than 27.7 mpg.
 
 ### 10.) If quarter mile times follow the Normal Model $N(\mu = 17.85, \sigma = 1.79)$, how quickly do the middle 75% of cars complete a quarter mile drag race?  
 I.e., if $P(l \le QSEC \le u) = 0.75$, what are $l$ and $u$? 
 
 ```{r}
-qnorm(c(.25, .75), 17.85, 1.79)
+qnorm(c(.125, .875), mean = 17.85, sd = 1.79)
 ```
 
+The middle 75% of cars finish the quarter mile in 15.8-19.9 seconds.
 
 
 

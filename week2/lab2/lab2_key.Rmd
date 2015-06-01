@@ -1,7 +1,7 @@
 ---
 title: 'Lab 2: Correlation and Regression'
 date: 'May 29, 2015'
-output: pdf_document
+output: html_document
 ---
 
 ## Overview
@@ -56,16 +56,105 @@ Regression:
 ### Problems:  
 
 1. Make a scatterplot of quarter mile time (`qsec`) vs. weight (`wt`).  Sketch the graph.
+
+```{r}
+library(ggplot2)
+mtcars2 <- read.table("http://stat.wvu.edu/~draffle/111/week1/lab1/mtcars2.tsv",
+                      header = TRUE, sep = "\t")
+ggplot(mtcars2, aes(x = wt, y = qsec)) + geom_point()
+```
+
 2. Does there appear to be a strong linear relationship between `qsec` and `wt`?  Include any relevant statistics.
+```{r}
+with(mtcars2, cor(qsec, wt))
+```
+
+The scatter plot and correlation coefficient of $r = -0.17$ suggest there is an extremely weak negative or no linear association between quarter mile time and weight.
+
 3. Fit the regression line that that predicts engine size (`disp`) with weight (`wt`).  Report the line equation and interpret the slope and intercept in the context of the data set; make sure to include units in your description. (keep in mind that weight is measured in *thousands* of pounds).
+```{r}
+summary(lm(disp ~ wt, mtcars2))
+```
+
+Our regression line is: $\widehat{disp} = -131.15 - 112.48wt$.  This suggests that engine size increases 112.48 cubic inches for every additional thousand pounds of car weight, on average.  
+
+The y-intercept tells us that we would predict a car weighing zero pounds having an engine displacement of -131.15 $in^3$.  Since a car cannot weigh zero pounds, and volume cannot be negative, this is not interpretable.
+
 4. Report the $R^2$ statistic for this model.  What does it tell us about the relationship?
+
+For this model, $R^2 = 0.7885$, telling us that 78.85% of the variability in engine size is accounted for by the weight of the car.
+
 5. Sketch a scatterplot of `mpg` vs. `hp`.  Describe the relationship, making sure to include any relevant statistics.  Would linear regression be appropriate?
+
+```{r}
+ggplot(mtcars2, aes(x = hp, y = mpg)) + geom_point()
+with(mtcars2, cor(hp, mpg))
+```
+
+The pattern in the scatterplot and correlation coefficient of $r - 0.78$ suggest a moderately strong negative linear relationship between fuel efficiency and horsepower.  Because of this, a linear model would appropriately describe the relationship.
+
 6. Fit the Least Squares Regression line for predicting fuel efficiency (`mpg`) from horsepower (`hp`).  Report the line equation and interpret the slope and intercept in the context of the data set; make sure to include units in your description.
+```{r}
+summary(lm(mpg ~ hp, mtcars2))
+```
+
+Our regression line is: $\widehat{mpg} = 30.0987 - 0.0682hp$.  On average, a car will lose 0.07 mpg for every increase in horsepower.
+
+The y-intercept of 30.10 suggests that a car with zero horsepower has a fuel efficiency of 30.1 mpg.  Since a car with zero horsepower wouldn't move at all, this coefficient is only useful for making predictions and drawing the line, but is not interpretable.
+
 7. Find the expected fuel efficiency for the Maserati Bora based just on its horsepower (show your work).  Describe how well the prediction matches with the actual value using the residual.
+
+$$\begin{align}
+  \widehat{mpg} &= 30.0987 - 0.0682hp\\
+  \widehat{mpg} &= 30.0987 - 0.0682(335)\\
+  \widehat{mpg} &= 30.0987 - `r round(0.0682*335, 4)`\\
+  \widehat{mpg} &= `r 30.0987 - round(0.0682*335, 4)`\\
+\end{align}$$
+
+Based just on its horsepower, we would expect the Maserati Bora to have a fuel efficiency of 7.25.
+
+$$\begin{align}
+  residual &= mpg - \widehat{mpg}\\
+  residual &= 15 - 7.2517\\
+  residual &= `r 15 - 7.2517`\\
+\end{align}$$
+
+The Maserati has a residual of 7.75, so it has much better fuel efficiency than expected.
+
 8. Fit a linear model which predicts quarter mile time (`qsec`) from horsepower (`hp`). Report the line equation and interpret the slope and intercept in the context of the data set; make sure to include units in your description.
+```{r}
+(mod <- summary(lm(qsec ~ hp, mtcars2)))
+```
+
+The linear model to predict quarter second time from horsepower is: $\widehat{qsec} = 20.5564 - 0.0185hp$.  On average, an increase of one horsepower improves a cars quarter mile time by 0.02 seconds.
+
+The y-intercept suggests that a car with no horsepower could complete a quarter mile drag race in 20.56 seconds, which doesn't make sense.  Because of this, the y-intercept is only useful for drawing the line or making predictions, not in describing the real world.
+
 9. What percent of the variability in quarter mile time is accounted for by horsepower?
+
+Since we have $R^2 = 0.5016$, 50.16% of the variability in quarter mile times is accounted for by horsepower.  Other factors, such as the transmission type, weight, etc. probably play a role.
+
 10. Which car has the highest residual for this linear model (you can get information about a point by hovering over it with your mouse)?  What is the residual?
 
+```{r}
+ggplot(mtcars2, aes(x = hp, y = qsec)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+mtcars2[which.max(residuals(mod)), ]
+```
+
+The car furthest from the line is is the Mercedes 230, which has 95 horsepower and a quarter mile time of 22.9 seconds.
+
+$$\begin{align}
+  \widehat{qsec} &= 20.5564 - 0.0185hp\\
+  \widehat{qsec} &= 20.5564 - 0.0185(95)\\
+  \widehat{qsec} &= 20.5564 - `r 0.0185*95`\\
+  \widehat{qsec} &= `r 20.5564 - 0.0185*95`\\
+\end{align}$$
+
+The model predicts that the Mercedes 230 would finish the quarter mile in 18.80 seconds based on its horsepower alone.  The residual is:
+
+$$qsec - \widehat{qsec} = 20.5564 - 18.7989 = `r 20.5564 - 18.7989`$$
+
+The residual of 1.76 tells us that the Mercedes 230 is 1.76 seconds slower than we'd expect.
 
 
 

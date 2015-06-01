@@ -1,0 +1,336 @@
+---
+title: "Chapter 11"
+author: "D. Raffle"
+date: "6/1/2015"
+output:
+  ioslides_presentation:
+    incremental: yes
+    widescreen: yes
+subtitle: "Experiments and Observational Studies"
+---
+
+## Recall
+When we study populations:
+
+- We are usually interested in some number or **parameter** that describes the population.
+- We estimate parameters with **statistics**, which are calculated from **samples**
+- Samples are randomly drawn from the population of interest
+- If our sample is **representative**, our statistics will be good estimators of the parameters.
+
+## Experiments and Observational Studies
+There are two major types of studies:
+
+- Experiments
+- Observational Studies
+
+Observational studies can be further broken down into:
+
+- Prospective Studies
+- Retrospective Studies
+
+## Case Study
+Consider the following study:
+
+- To examine the effect of music programs on academic performance, a sample of students music students and non-music students were collected at a particular high school.
+
+They found the following average GPAs:
+
+- Music students: 3.59
+- Non-Music Students: 2.91
+
+What does this tell us?
+
+- Should every student be forced to play an instrument?
+
+## Observational Studies
+
+Key characteristics:
+
+- Researchers simply **observe** the subjects
+- Various measurements or values are recorded for each subject
+- Good for describing or discovering relationships, especially in large populations
+- **Cannot** prove cause-and-effect, only provide evidence
+- Handling lurking or confounding variables can be tough
+
+## Case Study
+For our students:
+
+- This was an observational study
+- Did they prove that playing an instrument increases grades?
+- Other factors could be at play
+- Families with more money can afford musical instruments and pay for tutors
+- If you have to work after school, you don't have time for band practice or homework
+
+## Retrospective Studies
+Retrospective studies collect data on events that already occured
+
+- This is the most common type of retrospective study
+
+They can be unreliable:
+
+- Rely on subjects' memories
+- Historical records can be incomplete
+- We only have information for people "in the system"
+
+Examples:
+
+- Medical Records
+- Customer History
+- Academic Records
+
+## Prospective Studies
+Prospective studies identify subjects first, then make observations as time goes on
+
+- This is commonly used in genetics or family studies
+
+Pros:
+
+- Better for finding causal relationships
+- Can record any variables we want, not just what's already in records
+
+Cons:
+
+- Takes a long time (often years)
+- Can be expensive
+- Rare events require very large samples
+
+## Case Study
+The study on music and academic performance could have been either type.
+
+Retrospective:
+
+- Choose a random sample of students in a given year
+- Examine academic records of these students
+- Calculate GPA
+
+Prospective:
+
+- Choose a random sample of kindergarten students
+- Record their performance as they go through school and if/when they start in a music program
+
+## Case Study
+
+Which would have been better?
+
+Retrospective:  
+
+- Can be done very quickly at any point in time
+- Very cheap -- just need to get records
+
+Prospective:
+
+- We can see if performance changed **for each student** as they picked up an instrument
+- We can also track if they pick up a part-time job or have any family problems
+
+
+## Experiments
+
+While observational studies have researchers passively observing, researchers actively impose **treatments** on the subjects.
+
+Examples:
+
+- Clinical trials
+- Scientific experiments
+- Marketing trials
+- Psychological experiments
+
+Experiments are the **only** type of study that can prove cause-and-effect.
+
+## Treatments
+In experiments, we call the explanatory variables **factors** and their possible values **levels**.  A **treatment** is a unique combination of factor levels.
+
+Say we wanted to test the affects of medicine $X$ taken every 2 hours or every 4 hours, compared to a placebo.
+
+- The factor *medicine* has levels: "X", "Placebo"
+- The factor *interval* has levels: "2 hours", "4 hours"
+- We get four treatments: "X, 2 hours"; "X, 4 hours"; "Placebo, 2 hours"; "Placebo, 4 hours"
+
+
+## Performing Experiments
+Designing an experiment is essentially just following the scientific method
+
+1. Come up with a hypothesis (question)
+2. Identify the **factors**
+3. Identify the **response**
+4. Select the **experimental units** (subjects, participants, classroom, petri dishes, etc.)
+5. Decide on the **levels** of the factors and make **treatments**
+6. Assign treatments to experimental units
+7. Analyze the results and compare treatments
+
+## Assigning Participants to Treatments
+For any experiment (especially those with humans), decided who gets which treatment is important.
+
+- Never let the subjects choose (or even know)
+- Don't assign people to treatments based on what you think they need (giving the sickest the new drug)
+- In fact, never assign treatments yourself
+- Give each participant a label and let software **randomly** assign treatments
+
+There's one catch
+
+- Experiments can introduce ethical dilemmas 
+
+
+## Case Study
+Say we want to study the relationship between Post-Traumatic Stress Disorder (PTSD) and suicide in veterans. What would the different studies look like?
+
+Retrospective:
+
+- Examine medical records of soldiers and compare suicide rates of those with and without PTSD
+
+Prospective:
+
+- Track soldiers as they get discharged and watch their mental health
+
+Experiment:
+
+- Randomly assign soldiers to high-pressure combat situations where they'd be likely to develop PTSD and see if they commit suicide in the following years
+
+
+## Experiments: Major Principles
+There are four major principles in experimental design:
+
+1. Control
+2. Randomization
+3. Replication
+4. Blocking
+
+## Control
+**Control** in an experiment means regulating as many conditions as possible, like:
+
+- Temperature
+- Time of Day
+- Classroom conditions
+
+Why?
+
+- Controlling allows us to isolate the treatments we want to study
+- This eliminates (or at least mitigates) the effects of lurking variables
+
+## Randomization
+Randomizing the assignment of treatments helps us by:
+
+- Equalizing the effects of uncontrollable variation across the sample
+- Distributes uncontrollable effects (lurking variables) evenly across the groups
+- The effects of lurking variables will "average out" so they don't matter
+
+Generally, we control what we can and randomize what we can't.  
+
+## Replication
+When we **replicate**, we apply a treatment to more than once
+
+- We assign multiple subjects the same treatment
+- Ideally, we repeat the entire experiment on a new sample
+
+Why?
+
+- This helps us mitigate the chances of our results being a coincidence
+
+## Blocking
+When we **block**, we group similar observations together and apply all treatments within the block.
+
+Why block?
+
+- By blocking, we get more precise results by eliminating variation between the groups
+
+Examples
+
+- Blocking by gender if we expect men and women to react differently
+- Blocking by age if we think it has a large effect
+
+## Case Study
+A certain researcher thinks that taking an herbal supplement will help insomniacs get to sleep.
+
+What is the hypothesis?
+
+- Taking the supplement decreases the time it takes for insomniacs to fall asleep
+
+What is the factor?
+
+- Take the herbal supplement or don't take it
+
+What is the response?
+
+- The time it takes to fall asleep
+
+## Case Study
+
+What are our experimental units?
+
+- Individuals with insomnia
+
+What are our treatments?
+
+- Placebo or supplement (or various doses)
+
+How do we assign treatments?
+
+- Randomly, and without the subjects knowing
+
+Analyzing
+
+- Did the people who got the supplement fall asleep faster, on average?
+
+## Case Study
+Should we block here?
+
+- People in different lines of work will have different stress levels
+- Stress level can affect sleeping habits, so we should consider blocking on industry
+- The supplement might affect men and women differently, so we might want to block on gender
+- People often sleep less as they get older, so blocking by age range might be a good idea
+
+## The Placebo Effect
+The **control group** is a group that doesn't get a treatment.  Unfortunately, there's a complication called the **placebo effect**
+
+- People subconsciously react when they're told they might react to something.
+- This means that we can't just give some people pills and not give anything to the others -- our results might just be due to the placebo effect.
+- To get around this, we give everyone a treatment, but some people get an inert treatment called a **placebo**
+
+This isn't just limited to subjects
+
+- If the researcher knows who gets the drug in a medical trial, they might act more hopeful when examining them
+- The researcher can unknowingly influence the results of the trial
+
+## Control Groups
+We can mitigate the effects of the placebo effect using **blinding**
+
+Single blinding:
+
+- The subjects don't know whether they get the treatment or a placebo
+
+Double blinding:
+
+- Neither the subject nor the researcher know whether the subject got the treatment or a placebo
+
+## Lurking and Confounding
+Thus far, we've used lurking and confounding interchangeably when a third variable affects the relationship between two that we are interested in.  There is a subtle difference.
+
+Say we are interested in how $X$ affects $Y$, but there is a third factor $W$
+
+Lurking Variable:
+
+- $W$ affects both $X$ and $Y$
+- $X$ and $Y$ are not related
+- This can make it look like $X$ and $Y$ are associated
+- Forest fires and ice creams sales are both linked to temperature
+
+## Confounding Variables
+
+- $W$ directly affects $X$
+- $W$ may also be related to $Y$
+- If we don't know about $W$, it will make it look like $X$ causes $Y$ exclusively
+- Drinking habits and age of death might be related
+- Drinking habits might also be related to social class
+- Social class can also affect the age of death
+- If we control for social class, we might not see an association between drinking and age of death
+
+## Summary
+
+- Observational studies are when researchers simply observe their subjects.  They can be retrospective or prospective.
+- In experiments, researchers actively impose a treatment on the subjects
+- We can control for the placebo effect using blinding
+- We can control for lurking and confounding variables with randomization, replication, and blocking
+
+
+
+
+
