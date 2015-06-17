@@ -1,0 +1,19 @@
+---
+title: "Pop Quiz"
+author: "D. Raffle"
+date: "6/10/2015"
+output:
+  ioslides_presentation:
+    incremental: no
+    widescreen: yes
+---
+
+## Quiz
+
+For each of the following problems, state whether the probability distribution is most likely to be: Bernoulli, Binomial, Poisson, or Normal
+
+1. Correctly guessing the answer to **one** multiple choice question
+2. The number of correct answers on a quiz with five multiple choice questions, if you randomly guess
+3. The number of students coming to office hours in a given day
+4. The height of college students
+5. The number of people of people, out of 20, who die of a particular disease

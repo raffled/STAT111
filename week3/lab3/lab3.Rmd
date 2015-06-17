@@ -1,0 +1,90 @@
+---
+title: 'Lab 3: Probability'
+author: "STAT 111"
+date: "6/5/2015"
+output: pdf_document
+---
+
+## Complete the following problems on a separate piece of paper.  Read these instructions carefully. 
+
+- Hand in your answers at the end of lab -- make sure to include you name and the lab number.  Instructions are included for making graphs and finding the necessary statistics for each problem.
+- Each question will be worth two points, and you can receive partial credit for incorrect answers if your process was correct.
+- Write your final answer **as a sentence** and include all steps you used to get there, otherwise you will receive partial credit.
+- When performing calculations, keep intermediate steps rounded to **four decimal places**, and round your final answer to **three decimal places**.
+
+## Formulas:
+$$
+  \hat{p} = \frac{\text{\# of occurances}}{\text{\# of trials}} = \frac{x}{n}
+$$
+$$
+  P(A) = \frac{\text{\# of ways A can occur}}{\text{total \# of outcomes}}
+$$
+$$
+  P(A \text{ OR } B) = P(A) + P(B) - P(A \text{ AND } B)
+$$
+$$
+  P(A \text{ AND } B) = P(A)\times P(B\; |\; A) = P(B)\times P(A\; |\; B)
+$$
+$$
+  P(A\; |\; B) = \frac{P(A \text{ AND } B)}{P(B)}
+$$
+
+$A$ and $B$ are independent if $P(A) = P(A\; |\; B)$, $P(B) = P(B\; |\; A)$, or if $P(A \text{ AND } B) = P(A)\times P(B)$
+
+$A$ and $B$ are disjoint if $P(A \text{ AND } B) = 0$.
+
+## Part A: Attendence and Grades
+For a particular statistics class, 75% of the class attends lectures regularly, 70% of the class passes the course, and 90% of those who attend class regularly pass the course.  Let $A$ be the event that a student attends lectures regularly and $B$ be the event that a particular student passes the course.
+
+1. What is the probability of randomly selecting a student who attends the lecture regularly and passes?
+2. What is the probability a student doesn't attend regularly passes the course?  
+Hint:  $P(B) = P(A \text{ AND } B) + P(A^C \text{ AND } B) \to P(A^C \text{ AND } B) = P(B) - P(A \text{ AND } B)$.
+3. Given that a student passes, what is the probability that they attended the lecture regularly?
+
+## Part B: Gender and Video Games
+A media researcher surveyed 417 people and obtained the following partial results.
+
+1. Complete the following table:
+
+
+Gender/Plays | Yes | No | Total 
+-------------|-----|----|-------
+Male         | 119 |    | 230        
+Female       |     |    |       
+Total        | 203 |    | 417
+
+2. Are being male and playing video games independent? Make sure to provide evidence.
+
+## Part C: Breast Cancer Testing
+The follow numbers are **real** probabilities concerning women in their forties and mammograms, which test for breast cancer. Among these women, the rate of breast cancer is quite low, only about 1.4%.  Mammograms are not very sensitive tests, they only detect cancer when it exists 75% of the time. On the other hand, they have a false positive rate (saying there is cancer when there is not) of 10%.  Let's denote these probabilities as follows:
+
+Event       | Notation  | Probability
+------------|-----------|-------------
+Has Cancer  | $C$       | $P(C) = 0.014$
+True Positive | $\text{+}\; |\; C$ | $P(\text{+}\; |\; C) = 0.75$
+False Positive | $\text{+}\; |\; C^C$ | $P(\text{+}\; |\; C^C) = 0.10$
+
+
+1. What is the probability that a woman in her 40s has cancer and tests positives to the mammogram?  
+Hint: $P(A \text{ AND } B) = P(A)\times P(B\; |\; A)$
+2. What is the probability that a women in her 40s doesn't have cancer and tests positive?  Hint: use the same process as in Question 1, but with $C^C$.
+3. Using your answers from Questions 1 and 2, find the probability that a woman has a mammogram and tests positive, regardless of whether or not she has cancer. Hint: $P(B) = P(A \text{ AND } B) + P(A^C \text{ AND } B)$
+4. Using the answers to Question 1 and Question 3, find the probability that a woman has cancer, given that she tests positive. 
+5. Doctors often refuse to give mammograms to women under 50 unless they are at particularly high risk, especially because the follow-up tests to confirm the breast cancer diagnosis can have dangerous complications. Use your answer to Question 4 to argue for or against this policy.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+---
+title: 'Lab 4: Probability Distributions'
+author: "STAT 111"
+date: "6/11/2015"
+output: pdf_document
+---
+
+## Complete the following problems on a separate piece of paper.  Read these instructions carefully. 
+
+- Hand in your answers at the end of lab -- make sure to include you name and the lab number.  Instructions are included for making graphs and finding the necessary statistics for each problem.
+- Each question will be worth two points, and you can receive partial credit for incorrect answers if your process was correct.
+- Write your final answer **as a sentence** and include all steps you used to get there, otherwise you will receive partial credit.
+- When performing calculations, keep intermediate steps rounded to **four decimal places**, and round your final answer to **three decimal places**.
+
+## Formulas:
+
+Distribution              | $E(X)$    | $Var(X)$    | $SD(X)$ 
+--------------------------|-----------|-------------|---------------
+$X \sim Bernoulli(p)$     | $p$       | $p(1 - p)$   | $\sqrt{p(1 - p)}$
+$X \sim Binomal(n, p)$    | $np$      | $np(1 - p)$ | $\sqrt{np(1 - p)}$
+$X \sim Poisson(\lambda)$ | $\lambda$ | $\lambda$   | $\sqrt{\lambda}$
+
+
+## In StatCrunch:
+For unnamed distributions:
+
+- Enter the table with the possible outcomes as one column and their corresponding probabilities as another column.
+- `Stat` $\to$ `Calculators` $\to$ `Custom`
+- Select $X$ column as `Values in`, Select $P(x)$ column as `Weights in`
+- Hit `Compute!` to find $E(X)$ and $SD(X)$
+
+For named distributions:
+
+- `Stat` $\to$ `Calculators` $\to$ Choose the distribution
+- Enter the relevant parameters ($n$, $p$, $\lambda$, $mu$, $\sigma$, etc.)
+- Enter range of interest, e.g. $P(X \le 20)$
+- Hit `Compute!`
+
+## Part A: The Lottery
+Say you play a scratch-off lottery ticket which costs $10 to play.  You get three numbers, and the prize tiles are randomly numbered.  Your prize is determined by how many of your numbers show up in the prize tiles, with payouts and probabilities determined as follows:
+
+Outcome | Prize $(X)$ | Probability $P(X = x)$
+--------|-------------|-------------------------
+Match all Three | $1,000 | $0.001$
+Match Two | $100 | $0.01$
+Match One | Free Ticket ($10) | 0.1
+Match None | $0 | $0.889$
+
+1. What is your expected prize?
+2. What is the standard deviation of the prizes?
+3. How much should you expect to win (or lose) on a single ticket? Hint: Winnings = Prize - Cost
+
+## Part B: Multiple Choice
+Assume you need to take a multiple choice statistics quiz with ten questions.  You haven't studied or attended lectures, so you guess the answer to each question completely at random.  Each question has four choices.
+
+1. For a single question, what is the probability of guessing the right answer?
+2. What is the probability distribution for the number of correct answers on the **entire** quiz? Make sure to include the name and any necessary parameters.
+3. What are the mean and standard deviation for the distribution of the number of correct answers?
+4. Say you need answer at least 60% of questions correctly to pass the quiz.  What is the probability of this happening?
+
+## Part C: Number of Forest Fires
+Say that Alaska averages 3 lost hikers per month in any given summer.
+
+1. What is the probability distribution of lost hikers in a month?  Make sure to include the name and any necessary parameters.
+2. What is the distribution of lost hikers for an entire summer (assume that a summer is 3 months)?  Make sure to include the name and any necessary parameters.
+3. What is the probability that fewer than 5 hikers get lost in an entire summer?
+
+
+
+
+
+
+
+
+
+
+
+

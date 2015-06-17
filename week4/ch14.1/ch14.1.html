@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pop Quiz</title>
+  <title>Chapter 14.1 – 14.3</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,8 +25,9 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Pop Quiz',
-                        useBuilds: true,
+                title: 'Chapter 14.1 – 14.3',
+                        subtitle: 'Random Variables and Probability Models',
+                useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
         enableTouch: true,
@@ -92,40 +93,651 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Solutions</h2></hgroup><article  id="solutions">
+<slide class=''><hgroup><h2>Overview</h2></hgroup><article  id="overview">
 
-<p>What Values can \(R^2\) take?</p>
+<p>In Chapters 12&#8211;13, we saw:</p>
 
 <ul class = 'build'>
-<li>\(0 \le R^2 \le 1\)</li>
+<li>How to decribe random phenomena as trials</li>
+<li>How to use probability rules to describe the outcomes of these trials</li>
 </ul>
 
-<p>What do we call the distance from our line to an observed value of \(Y\)?</p>
+<p>In this chapter, we will:</p>
 
 <ul class = 'build'>
-<li>A residual \((y - \hat{y})\)</li>
+<li>Describe the long-term behavior of random phenomena using <strong>probability distributions</strong></li>
+<li>See how many phenomena can be modeled using several common named distributions</li>
 </ul>
 
-<p>If \(r\) is positive, will the slope \((b_1)\) be positive or negative?</p>
+</article></slide><slide class=''><hgroup><h2>Background: Insurance</h2></hgroup><article  id="background-insurance">
+
+<p>Say a particular insurance company offers a &quot;death and disability&quot; policy with the following payouts:</p>
 
 <ul class = 'build'>
-<li>If \(r\) is positive, there is a positive correlation, so the slope <strong>must</strong> be positive</li>
+<li>$10,000 for death</li>
+<li>$5,000 for disability</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
-
-<p>If we remove an outlier with an extreme value in \(Y\), will \(R^2\) go up or down?</p>
+<p>They charge a $50 premium per year. How profitable do they think they&#39;ll be?</p>
 
 <ul class = 'build'>
-<li>If we remove an outlier, we remove a point far away from the line</li>
-<li>As a group, the points will now fit the shape of the line better</li>
-<li>If the fit is better, \(R^2\) will move closer to 1</li>
+<li>We need to know the probability that a given client will be killed or disabled</li>
+<li>With this information, we can find the <strong>expected value</strong> of their product</li>
+<li>We can also find the <strong>standard deviation</strong>, which can tell us about the uncertainty they&#39;ll face</li>
 </ul>
 
-<p>What does the acronym LSR stand for?</p>
+</article></slide><slide class=''><hgroup><h2>Probability Models</h2></hgroup><article  id="probability-models">
+
+<p>Recall that a mathematical model is just a formula that is used to represent the real world</p>
 
 <ul class = 'build'>
-<li><strong>L</strong>east <strong>S</strong>quares <strong>R</strong>egression</li>
+<li>\(Area = Base \times Height\)</li>
+<li>\(Speed = \frac{distance}{time}\)</li>
+</ul>
+
+<p>A statistical model is a mathematical model which accounts for the uncertainty of random events.</p>
+
+<ul class = 'build'>
+<li>\(\hat{y} = b_0 + b_1x\)</li>
+</ul>
+
+<p>A <strong>probability distribution</strong> is a specific type of statistical model which describes the probability of certain events happening.</p>
+
+<ul class = 'build'>
+<li>\(X \sim N(\mu,\; \sigma)\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Definitions</h2></hgroup><article  id="definitions">
+
+<p>A <strong>Random Variable</strong>:</p>
+
+<ul class = 'build'>
+<li>A variable whose value is random.<br/></li>
+<li>Each time we observe the variable, it is a random trial.</li>
+<li>A particular coin flip is a random trial, but flipping a coin is a random variable</li>
+<li>We typically denote random variables with capital letters, like \(X\) and its value using lower-case letters</li>
+<li>&quot;\(X=x\)&quot; means &quot;the variable \(X\) taking the value \(x\)&quot;</li>
+<li>\(P(X = x)\) is the probability that \(X\) takes the value \(x\)</li>
+<li>We usually use the shorthand \(P(x)\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Insurance: The Variable</h2></hgroup><article  id="insurance-the-variable">
+
+<p>For our insurance example, we&#39;ll denote the amount paid out \(X\). Suppose that the following is true:</p>
+
+<ul class = 'build'>
+<li>One in one thousand people will be killed in a given year, on average.</li>
+<li>Two in one thousand people will be disabled, on average.</li>
+</ul>
+
+<p>How do we represent this? Usually with a table</p>
+
+<ul class = 'build'>
+<li><table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Outcome</th>
+<th align="left">Payout \((x)\)</th>
+<th align="left">Probability \(P(x)\)</th>
+</tr>
+<tr class="odd">
+<td align="left">Death</td>
+<td align="left">$10,000</td>
+<td align="left">\(\frac{1}{1000}\)</td>
+</tr>
+<tr class="even">
+<td align="left">Disability</td>
+<td align="left">$5,000</td>
+<td align="left">\(\frac{2}{1000}\)</td>
+</tr>
+<tr class="odd">
+<td align="left">Neither</td>
+<td align="left">$0</td>
+<td align="left">\(\frac{997}{1000}\)</td>
+</tr>
+</table></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Discrete vs. Continuous</h2></hgroup><article  id="discrete-vs.-continuous">
+
+<p>A <strong>discrete</strong> random variable:</p>
+
+<ul class = 'build'>
+<li>A variable whose outcomes we can list</li>
+<li>The payout is discrete, because we can list all three outcomes</li>
+</ul>
+
+<p>A <strong>continuous</strong> random variable:</p>
+
+<ul class = 'build'>
+<li>There are too many possibilities to list</li>
+<li>We usually deal with ranges</li>
+<li>Usually measurements are continuous</li>
+<li>Something can weigh 1 kg, 1.1 kg, 1.11 kg, 1.111 kg, etc.</li>
+<li>Technically, there are an <strong>infinite</strong> number of possible outcomes</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Valid Distributions</h2></hgroup><article  id="valid-distributions">
+
+<p>The outcomes in a probability distribution make up the <strong>sample space</strong>, so we need to follow the same rules as in Chapter 12</p>
+
+<p>In the discrete case:</p>
+
+<ul class = 'build'>
+<li>All of the probabilities need to add up to exactly 1</li>
+<li>Outcomes cannot overlap</li>
+<li>Every probability needs to \(\ge 0\)</li>
+</ul>
+
+<p>In the continuous case:</p>
+
+<ul class = 'build'>
+<li>The same basic rules apply, but we need calculus to verify them</li>
+<li>For this class, just trust that they&#39;re valid</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>14.1 The Expected Value</h2></hgroup><article  id="the-expected-value">
+
+<p>The <strong>expected value</strong> is the <strong>long-term average outcome</strong> or <strong>population mean</strong> of a random variable.</p>
+
+<ul class = 'build'>
+<li>If we repeatedly observe it, what&#39;s the average?</li>
+<li>If we haven&#39;t observed a particular trial yet, what do we expect to happen?</li>
+</ul>
+
+<p>Notation</p>
+
+<ul class = 'build'>
+<li>\(E(X)\) or \(\mu\)</li>
+<li>We use \(E(X)\) if we&#39;re just describing the variable</li>
+<li>We use \(\mu\) if it&#39;s the parameter of a model, e.g. in the Normal Distribution</li>
+</ul>
+
+<p>Calculation</p>
+
+<ul class = 'build'>
+<li>\(E(X) = \sum xP(x)\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Insurance: The Expected Value</h2></hgroup><article  id="insurance-the-expected-value">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Outcome</th>
+<th align="left">Payout \((x)\)</th>
+<th align="left">Probability \(P(x)\)</th>
+</tr>
+<tr class="odd">
+<td align="left">Death</td>
+<td align="left">$10,000</td>
+<td align="left">\(\frac{1}{1000}\)</td>
+</tr>
+<tr class="even">
+<td align="left">Disability</td>
+<td align="left">$5,000</td>
+<td align="left">\(\frac{2}{1000}\)</td>
+</tr>
+<tr class="odd">
+<td align="left">Neither</td>
+<td align="left">$0</td>
+<td align="left">\(\frac{997}{1000}\)</td>
+</tr>
+</table>
+
+<p>Finding \(E(X)\)</p>
+
+<ul class = 'build'>
+<li>\(E(X) = \sum xP(x)\)</li>
+<li>\(E(X) = \$10000\left(\frac{1}{1000}\right) +  \$5000\left(\frac{2}{1000}\right) + \$0\left(\frac{997}{1000}\right)\)</li>
+<li>\(E(X) = \frac{\$10000}{1000} + \frac{\$10000}{1000} = \$10 + \$10 = \$20\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Insurace: Interpreting \(E(X)\)</h2></hgroup><article  id="insurace-interpreting-ex">
+
+<p>We found \(E(X) = \$20\). What does this tell us?</p>
+
+<ul class = 'build'>
+<li>For a given customer, the company expects to spend $20</li>
+<li>Remember that they charge $50 for the policy</li>
+<li>For each customer, we have an expected profit of $30</li>
+</ul>
+
+<p>Note</p>
+
+<ul class = 'build'>
+<li>They only ever pay out $10,000, $5,000 or $0</li>
+<li>They&#39;ll either lose $9,950 or $4950, or they can keep all $50</li>
+<li>Since most people will not get injured or killed, the larger number of customers who give them pure profit balance out those who cost them thousands</li>
+<li>This is the basis for all insurance/warranty plans</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>14.2 The Standard Deviation</h2></hgroup><article  id="the-standard-deviation">
+
+<p>For the insurance example, we had a wide range of outcomes. This means that there&#39;s a large amount of <strong>uncertainty</strong> or <strong>variability</strong> from customer to customer.</p>
+
+<ul class = 'build'>
+<li>Just like with the spread of samples, we describe the spread of probability distributions with the <strong>standard deviation</strong>.</li>
+<li>In samples, we found the variance as the <em>average squared distance</em> from observations to the mean</li>
+<li>The standard deviation was the square root of the variance</li>
+<li>For distributions, we use the <em>expected squared distance</em> from each outcome to the <em>expected value</em></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>The Standard Deviation</h2></hgroup><article  id="the-standard-deviation-1">
+
+<p>Notation:</p>
+
+<ul class = 'build'>
+<li>We use \(VAR(X)\) or \(\sigma^2\) to denote the distribution&#39;s variance</li>
+<li>We use \(SD(X)\) or \(\sigma\) to denote the distribution&#39;s standard devation</li>
+</ul>
+
+<p>Calculation:</p>
+
+<ul class = 'build'>
+<li>\(VAR(X) = \sigma^2 = \sum (x - \mu)^2P(x) = \sum x^2P(x) - \mu^2\)</li>
+<li>\(SD(X) = \sqrt{VAR(X)}\) or \(\sigma = \sqrt{\sigma^2}\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Insurance: The Standard Deviation</h2></hgroup><article  id="insurance-the-standard-deviation">
+
+<p>For our insurance company, \(X = \{\$10000,\; \$5000,\; \$0\}\) and \(E(X) = \$20\). Finding the standard deviation:</p>
+
+<ul class = 'build'>
+<li>\(\sigma^2 = \sum (x - \mu)^2P(X)\)</li>
+<li>\(\sigma^2 = (10000 - 20)^2\left(\frac{1}{1000}\right) + (5000 - 20)^2\left(\frac{2}{1000}\right) +  (0 - 20)^2\left(\frac{997}{1000}\right)\)</li>
+<li>\(\sigma^2 = (9980)^2\left(\frac{1}{1000}\right) + (4980)^2\left(\frac{2}{1000}\right) +  (-20)^2\left(\frac{997}{1000}\right)\)</li>
+<li>\(\sigma^2 = (9960040)\left(\frac{1}{1000}\right) + (24800400)\left(\frac{2}{1000}\right) +  (400)\left(\frac{997}{1000}\right)\)</li>
+<li>\(\sigma^2 = 99600.4 + 49600.8 + 398.8\)</li>
+<li>\(\sigma^2 = 149600\)</li>
+<li>\(\sigma = \sqrt{149600} = 386.7816\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Insurance: The Standard Deviation</h2></hgroup><article  id="insurance-the-standard-deviation-1">
+
+<p>What does it tell us that \(\sigma = \$386.78\)?</p>
+
+<ul class = 'build'>
+<li>There&#39;s a big difference between paying out thousands or pocketing $50</li>
+<li>While we expect to make $30 per person in the long term, there is a lot of uncertainty about individual customers</li>
+<li>They&#39;ll probably make a lot of profit if they insure thousands, but insuring a small number of people is a lot of risk</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>In StatCrunch</h2></hgroup><article  id="in-statcrunch">
+
+<p>This isn&#39;t an algebra class, so we can use StatCrunch to do the heavy lifting.</p>
+
+<ul class = 'build'>
+<li>Open a blank data set</li>
+<li>Enter the values of \(X\) as on column</li>
+<li>Enter the probabilities as another column</li>
+<li><code>Stat</code> \(\to\) <code>Calculators</code> \(\to\) <code>Custom</code></li>
+<li>Select the columns</li>
+<li>Hit <code>Compute</code></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>In StatCrunch</h2></hgroup><article  id="in-statcrunch-1">
+
+<p><img style="width: 500px; height: 500px; float: left;" src="pdf.png"> <img style="width: 400px; height: 500px; float: right;" src="pdf_menu.png"></p>
+
+</article></slide><slide class=''><hgroup><h2>In StatCrunch</h2></hgroup><article  id="in-statcrunch-2">
+
+<p><img style="width: 500px; height: 500px; float: left;" src="pdf_calc.png"> <img style="width: 400px; height: 500px; float: right;" src="pdf_out.png"></p>
+
+</article></slide><slide class=''><hgroup><h2>Example: Refurbished Computers</h2></hgroup><article  id="example-refurbished-computers">
+
+<p>Say a company sells custom computers to businesses. A particular client orders two new computers, but they refuse to take refurbished (repaired) computers.</p>
+
+<ul class = 'build'>
+<li>Someone made an error in stocking, and of the 15 computers in the stock room 4 were refurbished</li>
+<li>Since the company filled the order by randomly picking up computers from the stock room, there was a chance they shipped 0, 1, or 2 refurbished computers</li>
+<li>If the client just gets one refurbished computer, they&#39;ll ship it back at the computer company&#39;s expense, costing them $100</li>
+<li>If they get two refurbished machines, they&#39;ll cancel the entire order, and the computer comany will lose $1000.</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Refurbished Computers: Probabilities</h2></hgroup><article  id="refurbished-computers-probabilities">
+
+<p>Getting Two New Computers</p>
+
+<ul class = 'build'>
+<li>There are 11 new machines out of 15</li>
+<li>\(P(\text{first new}) = \frac{11}{15}\)</li>
+<li>\(P(\text{second new } | \text{ first new}) = \frac{10}{14}\)</li>
+<li>\(P(\text{both new}) = P(\text{first new} \text{ AND } \text{second new } | \text{ first new})\)</li>
+<li>\(P(\text{both new}) = P(\text{first new}) \times P(\text{second new } | \text{ first new})\)</li>
+<li>\(P(\text{both new}) = \frac{11}{15} \times \frac{10}{14} = \frac{110}{210} \approx 0.524\)</li>
+<li>There&#39;s a 52.4% chance the computer company doesn&#39;t lose money</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Refurbished Computers: Probabilities</h2></hgroup><article  id="refurbished-computers-probabilities-1">
+
+<p>Getting Two Refurbished Computers</p>
+
+<ul class = 'build'>
+<li>There are 4 refurbished machines out of 15</li>
+<li>\(P(\text{first refurb.}) = \frac{4}{15}\)</li>
+<li>\(P(\text{second refurb. } | \text{ first refurb.}) = \frac{3}{14}\)</li>
+<li>\(P(\text{both refurb.}) = P(\text{first refurb.} \text{ AND } \text{second refurb. } | \text{ first refurb.})\)</li>
+<li>\(P(\text{both refurb.}) = P(\text{first refub.}) \times P(\text{second refub. } | \text{ first refurb.})\)</li>
+<li>\(P(\text{both refurb.}) = \frac{4}{15}\times\frac{3}{14} = \frac{12}{210} \approx 0.057\)</li>
+<li>There&#39;s a 5.7% chance the computer company loses $1000</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Refurbished Computers: Probabilities</h2></hgroup><article  id="refurbished-computers-probabilities-2">
+
+<p>Getting One Refurbished Computer</p>
+
+<ul class = 'build'>
+<li>Note that the sample space only includes getting two new computers, getting two refurbished computers, or one of each</li>
+<li>\(P(\text{both new}) + P(\text{both refurb}) + P(\text{one new}) = 1\)</li>
+<li>\(P(\text{one new}) = 1 - (P(\text{both new}) + P(\text{both refurb}))\)</li>
+<li>\(P(\text{one new}) = 1 - (0.524 + 0.057)\)</li>
+<li>\(P(\text{one new}) = 1 - 0.581\)</li>
+<li>\(P(\text{one new}) = 0.419\)</li>
+<li>There&#39;s a 41.9% chance the computer company loses $100</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Refurbished Computers: The Probability Distribution</h2></hgroup><article  id="refurbished-computers-the-probability-distribution">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Outcome</th>
+<th align="left">Money Lost \((X)\)</th>
+<th align="left">Probability \(P(x)\)</th>
+</tr>
+<tr class="odd">
+<td align="left">Both Refurbished</td>
+<td align="left">$1000</td>
+<td align="left">0.057</td>
+</tr>
+<tr class="even">
+<td align="left">One New</td>
+<td align="left">$100</td>
+<td align="left">0.419</td>
+</tr>
+<tr class="odd">
+<td align="left">Both New</td>
+<td align="left">$0</td>
+<td align="left">0.524</td>
+</tr>
+</table>
+
+<p>Now we can use StatCrunch to find \(E(X)\) and \(SD(X)\)</p>
+
+</article></slide><slide class=''><hgroup><h2>In StatCrunch</h2></hgroup><article  id="in-statcrunch-3">
+
+<p><img style="width: 800px; height: 500px; float: left;" src="refurb.png"></p>
+
+</article></slide><slide class=''><hgroup><h2>In StatCrunch</h2></hgroup><article  id="in-statcrunch-4">
+
+<p><img style="width: 500px; height: 500px; float: left;" src="refurb_menu.png"> <img style="width: 450px; height: 500px; float: right;" src="refurb_out.png"></p>
+
+</article></slide><slide class=''><hgroup><h2>Refurbrished Computers: Interpretation</h2></hgroup><article  id="refurbrished-computers-interpretation">
+
+<p>\(E(X) = \$98.9\)</p>
+
+<ul class = 'build'>
+<li>The company should expect to lose $98.90 for this mistake</li>
+<li>While the most likely outcome is the company not losing money, the rare event of them losing $1000 carries a lot of weight</li>
+</ul>
+
+<p>\(SD(X) = \$226.74\)</p>
+
+<ul class = 'build'>
+<li>There&#39;s a lot of uncertainty in this scenario</li>
+<li>They could lose 0, $100, or $1000. Since there&#39;s only two computers, it&#39;s hard to predict exactly what will happen this one time.</li>
+<li>If this mistake were to be repeated, the outcome might be completely different</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>14.3 Combining Random Variables</h2></hgroup><article  id="combining-random-variables">
+
+<p>Let&#39;s head back to the insurance example.</p>
+
+<ul class = 'build'>
+<li>We looked at the company&#39;s expected payout for a single person</li>
+<li>What if the company lowered the price of the premium from $50 to $45?</li>
+<li>What if we doubled the payouts?</li>
+<li>What would the expected payout be for two people? The standard deviation?</li>
+</ul>
+
+<p>It turns out we have simple rules for these problems.</p>
+
+</article></slide><slide class=''><hgroup><h2>Adding a Constant</h2></hgroup><article  id="adding-a-constant">
+
+<p>We saw in earlier chapters that adding or sutracting a constant from each value in a sample shifts the mean, but leaves the measures of spread alone. The same is true for random variables.</p>
+
+<ul class = 'build'>
+<li>\(E(X \pm c) = E(X) \pm c\)</li>
+<li>\(VAR(X \pm c) = VAR(X)\)</li>
+<li>\(SD(X \pm c) = SD(X)\)</li>
+</ul>
+
+<p>What if our insurance company lowered the premium by $5?</p>
+
+<ul class = 'build'>
+<li>\(E(X) = \$20\), so the expected profit was $50 - $20 = $30</li>
+<li>If we lose an additional $5 from each customer, the expected profit is $45 - $20 = $25</li>
+<li>The standard deviation will stay the same</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Multiplying by a Constant</h2></hgroup><article  id="multiplying-by-a-constant">
+
+<p>In earlier chapters, we saw that the mean and standard deviation were both scaled when multiplying by a constant. The same holds true for random variables.</p>
+
+<ul class = 'build'>
+<li>\(E(aX) = aE(X)\)</li>
+<li>\(VAR(aX) = a^2VAR(X)\), because we <strong>square</strong> all the differences from the means</li>
+<li>\(SD(aX) = |a|SD(X)\), again because we are <strong>squaring</strong> things then taking the square root</li>
+</ul>
+
+<p>So what happens if we double all payouts for the insurance company?</p>
+
+</article></slide><slide class=''><hgroup><h2>Doubling Payouts</h2></hgroup><article  id="doubling-payouts">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Outcome</th>
+<th align="left">Payout \((x)\)</th>
+<th align="left">Probability \(P(x)\)</th>
+</tr>
+<tr class="odd">
+<td align="left">Death</td>
+<td align="left">$20,000</td>
+<td align="left">\(\frac{1}{1000}\)</td>
+</tr>
+<tr class="even">
+<td align="left">Disability</td>
+<td align="left">$10,000</td>
+<td align="left">\(\frac{2}{1000}\)</td>
+</tr>
+<tr class="odd">
+<td align="left">Neither</td>
+<td align="left">$0</td>
+<td align="left">\(\frac{997}{1000}\)</td>
+</tr>
+</table>
+
+<p>Using StatCrunch,</p>
+
+<ul class = 'build'>
+<li>\(E(X) = \$40\)</li>
+<li>\(SD(X) = \$773.56\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Doubling Payments</h2></hgroup><article  id="doubling-payments">
+
+<p><img style="width: 800px; height: 500px; float: left;" src="double.png"></p>
+
+</article></slide><slide class=''><hgroup><h2>What Happened?</h2></hgroup><article  id="what-happened">
+
+<p>\(E(X) = \$40\)</p>
+
+<ul class = 'build'>
+<li>Because we doubled all payouts, the expected payout has doubled</li>
+</ul>
+
+<p>\(SD(X) = \$773.56 = 2\times \$386.78\)</p>
+
+<ul class = 'build'>
+<li>By doubling all payouts, we doubled the differences between the outcomes</li>
+<li>Since the outcomes are further apart, we doubled the range of outcomes</li>
+<li>For any one customer, there is much more uncertainty in how much the company will lose</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Adding Variables</h2></hgroup><article  id="adding-variables">
+
+<p>Instead of looking at a single customer, we&#39;ll look at two. Call them Mr. \(X\). and Mrs. \(Y\).</p>
+
+<p>Isn&#39;t looking at two customers the same as multiplying one customer&#39;s payouts by two?</p>
+
+<ul class = 'build'>
+<li>Not quite.<br/></li>
+<li>Mr. \(X\) might die, but Mrs. \(Y\) survives the year unharmed</li>
+<li>Mr. \(X\) could stay safe, while Mrs. \(Y\) gets maimed</li>
+<li>We have different rules for adding random variables</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Adding Variables</h2></hgroup><article  id="adding-variables-1">
+
+<p>If \(X\) and \(Y\) are independent,</p>
+
+<ul class = 'build'>
+<li>\(E(X + Y) = E(X) + E(Y)\)</li>
+<li>\(VAR(X + Y) = VAR(X) + VAR(Y)\)</li>
+<li>\(SD(X + Y) = \sqrt{VAR(X + Y)}\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Insurance: Adding Variables</h2></hgroup><article  id="insurance-adding-variables">
+
+<p>So what should the insurance company expect with Mr. \(X\) and Mrs. \(Y\)?</p>
+
+<p>\(E(X + Y)\):</p>
+
+<ul class = 'build'>
+<li>\(E(X + Y) = E(X) + E(Y) = 20 + 20 = 40\)</li>
+</ul>
+
+<p>\(SD(X + Y)\)</p>
+
+<ul class = 'build'>
+<li>\(VAR(X + Y) = VAR(X) + VAR(Y)\)</li>
+<li>\(VAR(X + Y) = 149600 + 149600 = 299200\)</li>
+<li>\(SD(X + Y) = \sqrt{299200} = \$546.99\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Insurance: Adding Variables</h2></hgroup><article  id="insurance-adding-variables-1">
+
+<p>What happened?</p>
+
+<ul class = 'build'>
+<li>By doubling the number of policies, we&#39;ve doubled the expected payout (but also the premiums we collect)</li>
+<li>Notice that \(SD(X + Y) &lt; SD(2X)\)</li>
+<li>By insuring multiple people, we spread the risk around between the customers</li>
+<li>Even though the expected payout is the same as offering one policy with twice the coverage, we&#39;ve reduced the uncertainty involved</li>
+<li>It&#39;s the same profit with less uncertainty</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Subtracting Variables</h2></hgroup><article  id="subtracting-variables">
+
+<p>Instead of adding variables, we can also subtract them. In general,</p>
+
+<ul class = 'build'>
+<li>\(E(X \pm Y) = E(X) \pm E(Y)\)</li>
+<li>\(VAR(X \pm Y) = VAR(X) + VAR(Y)\)</li>
+<li>\(SD(X \pm Y) = \sqrt{VAR(X) + VAR(Y)}\)</li>
+</ul>
+
+<p>Note that, even when we subtract the variables, we <strong>always</strong> add the variances</p>
+
+</article></slide><slide class=''><hgroup><h2>\(X + X \ne 2X\)</h2></hgroup><article  id="x-x-ne-2x">
+
+<p>Like we saw with the insurance example, adding two random variables with the same distribution is not the same as multiplying one of them by two</p>
+
+<ul class = 'build'>
+<li>For the insurance, \(2X = \{\$0, \$10000, \$20000\}\)</li>
+<li>For both customers, the sample space includes all possible combinations of \(X\) added together</li>
+</ul>
+
+<p>We need to be careful with notation</p>
+
+<ul class = 'build'>
+<li>For a small number of variables, we might use \(X\), \(Y\), and \(Z\)</li>
+<li>For more variables, we often number them \(X_1, X_2, \ldots, X_n\) where \(n\) is our number of variables</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Multiple Observations</h2></hgroup><article  id="multiple-observations">
+
+<p>When we observe the same variable multiple times, like having two insurance customers, we can simplify things. For each observation, the mean and variances are the same, so:</p>
+
+<ul class = 'build'>
+<li>\(E(X_1 + X_2) = E(X_1) + E(X_2) = 2\times E(X)\)</li>
+<li>\(E(X_1 + X_2 + \ldots + X_n) = n \times E(X)\)</li>
+<li>\(VAR(X_1 + X_2) = VAR(X_1) + VAR(X_2) = 2\times VAR(X)\)</li>
+<li>\(VAR(X_1 + X_2 + \ldots + X_n) = n \times VAR(X)\)</li>
+<li>\(SD(X_1 + X_2 + \ldots + X_n) = \sqrt{VAR(X_1 + X_2 + \ldots + X_n)}\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Example: Week and Weekend Shifts</h2></hgroup><article  id="example-week-and-weekend-shifts">
+
+<p>Say you&#39;re a waiter at a restauarant and a large portion of your income is in tips. During a typical 5-day work week, you make an average of $1200 with a standard deviation of $150. On the weekends, you average $400 in tips with a standard deviation of $70. Let \(X\) represent the 5-day work week and \(Y\) represent the weekend.</p>
+
+<p>What do you expect to make for an entire 7-day week?</p>
+
+<ul class = 'build'>
+<li>\(E(X + Y) = E(X) + E(Y) = \$1200 + \$400 = \$1600\)</li>
+</ul>
+
+<p>What is the standard deviation for the entire week?</p>
+
+<ul class = 'build'>
+<li>\(VAR(X + Y) = VAR(X) + VAR(Y) = 150^2 + 70^2\)</li>
+<li>\(VAR(X + Y) = 22500 + 4900 = 27400\)</li>
+<li>\(SD(X + Y) = \sqrt{X + Y} = \sqrt{27400} \approx \$165.53\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Example: Week and Weekend Shifts</h2></hgroup><article  id="example-week-and-weekend-shifts-1">
+
+<p>Say that you typically make within one standard deviation of the mean. What&#39;s a typical weekly salary for you?</p>
+
+<ul class = 'build'>
+<li>\(E(X + Y) - SD(X + Y) = 1600 - 165.53 = \$1434.47\)</li>
+<li>\(E(X + Y) + SD(X + Y) = 1600 + 165.53 = \$1765.53\)</li>
+<li>You typically make between $1434.47 and 1765.53</li>
+</ul>
+
+<p>Only on really good weeks do you make more than two standard deviations above the mean. How much do you make in a really good week?</p>
+
+<ul class = 'build'>
+<li>\(E(X + Y) + 2\times SD(X + Y) = 1600 + 2\times 165.53 = 1600 + 331.06\)</li>
+<li>\(E(X + Y) + 2\times SD(X + Y) = \$1931.06\)</li>
+<li>Having a really good week means earning at least $1931.06</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Example: Monthly Income</h2></hgroup><article  id="example-monthly-income">
+
+<p>Using the same information from before, let&#39;s call weekly income \(W\). \(E(W) = \$1600\), \(SD(W) = \$165.53\)</p>
+
+<p>How much would you expect to make in a month?</p>
+
+<ul class = 'build'>
+<li>\(E(M) = E(W_1 + W_2 + W_3 + W_4) = 4 \times E(W)\)</li>
+<li>\(E(M) = 4 \times 1600 = \$6400\)</li>
+</ul>
+
+<p>What is the standard deviation for a month?</p>
+
+<ul class = 'build'>
+<li>\(VAR(M) = VAR(W_1 + W_2 + W_3 + W_4) = 4\times VAR(W)\)</li>
+<li>\(VAR(M) = 4 \times 165.53^2 = 4 \times 27400.18 = 109600.7\)</li>
+<li>\(SD(M) = \sqrt{VAR(M)} = \sqrt{109600.7} = 331.06\)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Summary</h2></hgroup><article  id="summary">
+
+<ul class = 'build'>
+<li>A <strong>random variable</strong> is a variable with a random outcome</li>
+<li>We describe the behavior of a random variable with a <strong>probability distribution</strong></li>
+<li>The <strong>expected value</strong> or <strong>mean</strong> of a random variable describe the long-term average</li>
+<li>The <strong>variance</strong> and <strong>standard deviation</strong> describe the uncertainty or spread of a distribution</li>
+<li>When we add random variables, we can add the expected values and variances (but not the standard deviation)</li>
 </ul></article></slide>
 
 
