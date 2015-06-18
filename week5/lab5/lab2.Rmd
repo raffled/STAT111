@@ -1,0 +1,96 @@
+---
+title: 'Lab 5: Confidence Intervals and Hypothesis Testing'
+date: 'May 29, 2015'
+output: pdf_document
+---
+
+## Overview
+In this lab, we will continue examining the Motor Trend Cars data set.
+
+The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
+
+## Load the Data in StatCrunch
+A Tab Separated File (.tsv) containing the data can be found here:
+
+[http://stat.wvu.edu/~draffle/111/week1/lab1/mtcars2.tsv](http://stat.wvu.edu/~draffle/111/week1/lab1/mtcars2.tsv)
+
+1. In StatCrunch, use the menus `Data` $\to$ `Load` $\to$ `From File` $\to$ `On the web`.
+2. Copy and Paste the address given above into `WWW Address`
+4. Click `Load File` at the bottom of the page.
+
+## Complete the following problems on a separate piece of paper.  Read these instructions carefully. 
+
+- Hand in your answers at the end of lab -- make sure to include you name and the lab number.  Instructions are included for making graphs and finding the necessary statistics for each problem.
+- Each question will be worth two points, and you can receive partial credit for incorrect answers if your process was correct.
+- When performing calculations, keep intermediate steps rounded to **four decimal places**, and round your final answer to **two decimal places**.
+- For this assignment, you do **not** need to write a sentence unless the problem specifically instructs it.
+
+For all problems, you can find your answers following the steps:
+
+**Confidence Intervals:**  
+
+- For Proportions:
+    + `Stat` $\to$ `Proportions` $\to$ `One Sample` $\to$ `With Data`
+    + Select Column of interest
+    + Type value for success, e.g. auto
+    + Select the radio button for `Confidence interval for p`
+    + Enter the Confidence Level
+    + Hit `Compute!`
+- For Means:
+    + `Stat` $\to$ `T Stats` $\to$ `One Sample` $\to$ `With Data`
+    + Select the Column of interest
+    + Select the radio button for `Confidence interval for $\mu$`.
+    + Enter the Confidence Level
+    + Hit `Compute!`
+	
+**Hypothesis Testing**
+
+- For Proportions:
+    + `Stat` $\to$ `Proportions` $\to$ `One Sample` $\to$ `With Data`
+    + Select Column of interest
+    + Type value for success, e.g. auto
+    + Select the radio button for `Hypothesis test for p`
+    + Specify your hypotheses
+    + Hit `Compute!`
+- For Means:
+    + `Stat` $\to$ `T Stats` $\to$ `One Sample` $\to$ `With Data`
+    + Select the Column of interest
+    + Select the radio button for `Hypothesis test for `$\;\mu$.
+    + Specify your hypotheses
+    + Hit `Compute!`
+  
+### Problems:
+
+#### Part A: Manuals vs. Automatic
+1. Create a 90% confidence interval for the proportion of automatics in 1974. Report the confidence interval. Make sure you enter "auto" as success in StatCrunch
+2. State your confidence interval from the previous problem as a sentence.
+3. Across most of the world, manual cars are much more common.  Assume that 25% of drivers have automatics world-wide. If we wanted to test the hypothesis that American drivers prefer automatics more than the rest of the world, state the hypotheses (null and alternative) that we would use.
+4. Test the hypotheses you came up with in Question 3.  Report the test statistic and the $p-$value.
+5. Interpret the results of your test in a sentence, using a cut-off of 5% for significance.
+
+#### Part B: Fuel Efficiency
+1. Create a 95% confidence interval for the mean fuel efficiency (`mpg`) of cars in 1974. 
+2. Write a sentence interpreting your confidence interval.
+3. Say the historical average fuel efficience of all cars is $22$ mpg.If we wanted to test that cars in 1974 had a **lower** fuel efficiency than this average, what would the hypotheses be?
+4. Test the hypotheses you came up with in Question 3.  Report the test statistic and the $p-$value.
+5. Interpret the results of your test, using a cut-off of 5% for significance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
