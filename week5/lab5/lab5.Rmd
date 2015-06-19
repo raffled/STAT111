@@ -39,7 +39,7 @@ For all problems, you can find your answers following the steps:
 - For Means:
     + `Stat` $\to$ `T Stats` $\to$ `One Sample` $\to$ `With Data`
     + Select the Column of interest
-    + Select the radio button for `Confidence interval for $\mu$`.
+    + Select the radio button for `Confidence interval for` $\mu$.
     + Enter the Confidence Level
     + Hit `Compute!`
 	
@@ -55,7 +55,7 @@ For all problems, you can find your answers following the steps:
 - For Means:
     + `Stat` $\to$ `T Stats` $\to$ `One Sample` $\to$ `With Data`
     + Select the Column of interest
-    + Select the radio button for `Hypothesis test for `$\;\mu$.
+    + Select the radio button for `Hypothesis test for` $\mu$.
     + Specify your hypotheses
     + Hit `Compute!`
   
@@ -71,7 +71,7 @@ For all problems, you can find your answers following the steps:
 #### Part B: Fuel Efficiency
 1. Create a 95% confidence interval for the mean fuel efficiency (`mpg`) of cars in 1974. 
 2. Write a sentence interpreting your confidence interval.
-3. Say the historical average fuel efficience of all cars is $22$ mpg.If we wanted to test that cars in 1974 had a **lower** fuel efficiency than this average, what would the hypotheses be?
+3. Say the historical average fuel efficience of all cars is $22$ mpg. If we wanted to test that cars in 1974 had a **lower** fuel efficiency than this average, what would the hypotheses be?
 4. Test the hypotheses you came up with in Question 3.  Report the test statistic and the $p-$value.
 5. Interpret the results of your test, using a cut-off of 5% for significance.
 
