@@ -46,3 +46,9 @@ final <- apply(scores, 1, function(i){
 final.df <- data.frame(id, final)
 
 stem(final, scale = 2)
+
+letter <- cut(final, c(0, seq(60, 100, 10)),
+              rev(LETTERS[c(1:4, 6)]),
+              right = FALSE)
+rev(table(letter))
+data.frame(final.df, letter)[order(final, decreasing = TRUE),]
